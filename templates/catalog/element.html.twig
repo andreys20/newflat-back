@@ -1,0 +1,87 @@
+
+{% block body %}
+    <section class="catalog-block">
+        <div class="container p-3 mt-5 mb-5 px-5 bg-grey">
+            <h2 class="text-start px-3">Сдается в 2022</h2>
+            <p class="text-start fw-light px-3"><b class="text-muted">Найдено 60 жилых комплекса</b></p>
+            <div class="catalog-tags d-flex flex-wrap">
+                <a class="btn m-2">Алмата</a>
+                <a class="btn m-2">Алмата 1</a>
+                <a class="btn m-2">Алмата 2</a>
+                <a class="btn m-2">Алмата 3</a>
+            </div>
+            <div class="catalog-sort d-flex flex-wrap align-items-center p-3">
+                <span>Сортировать по:</span>
+                <div class="items-sort d-flex flex-wrap">
+                    <div class="item px-2">
+                        <select class="form-select form-select-lg" id="sort">
+                            <option selected disabled value="">по цене</option>
+                            <option>по цене </option>
+                            <option>по цене</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-md-12">
+                    <div class="card mb-3 cold-md-12">
+                        <div class="row g-0 p-2">
+                            <div class="col-md-4">
+                                <img src="{{ asset('build/images/banners/zogoronaya_tishina.webp') }}" class="img-fluid rounded-start" alt="Загородная тишина">
+                            </div>
+                            <div class="col-md-3">
+                                <div class="text-start d-flex align-items-center h-100">
+                                    <div class="card-body text-start">
+                                        <h3 class="card-title"><a>ЖК "All Inclusive"</a></h3>
+                                        <p class="card-text text-muted">2,899,668 - 7,402,781 руб</p>
+                                        <p class="card-text">пос. Шушары, Старорусский пр., д. 13, кор. 1,2</p>
+                                        <p class="card-text"><small class="text-muted">Купчино (20 мин. трансп.)</small></p>
+                                        <p><b class="text-muted">Срок сдачи:</b> II-2021 - II-2022</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="card-body text-start d-flex align-items-center h-100">
+                                    <p class="text-muted fw-light">
+                                        Жилой комплекс All Inclusive – это пример рационального,
+                                        практичного жилья. Расположен на Старорусском проспекте города Санкт-Петербург.
+                                        Жители этого комплекса с легкостью смогут добраться в любую точку культурной
+                                        столицы благодаря отличной транспортной развязке и шаговой доступности общественного…
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mb-3 cold-md-12">
+                        <div class="row g-0 p-2">
+                            <div class="col-md-4">
+                                <img src="{{ asset('build/images/banners/zogoronaya_tishina.webp') }}" class="img-fluid rounded-start" alt="Загородная тишина">
+                            </div>
+                            <div class="col-md-3">
+                                <div class="text-start d-flex align-items-center h-100">
+                                    <div class="card-body text-start">
+                                        <h3 class="card-title"><a>ЖК "All Inclusive"</a></h3>
+                                        <p class="card-text text-muted">2,899,668 - 7,402,781 руб</p>
+                                        <p class="card-text">пос. Шушары, Старорусский пр., д. 13, кор. 1,2</p>
+                                        <p class="card-text"><small class="text-muted">Купчино (20 мин. трансп.)</small></p>
+                                        <p><b class="text-muted">Срок сдачи:</b> II-2021 - II-2022</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="card-body text-start d-flex align-items-center h-100">
+                                    <p class="text-muted fw-light">
+                                        Жилой комплекс All Inclusive – это пример рационального,
+                                        практичного жилья. Расположен на Старорусском проспекте города Санкт-Петербург.
+                                        Жители этого комплекса с легкостью смогут добраться в любую точку культурной
+                                        столицы благодаря отличной транспортной развязке и шаговой доступности общественного…
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

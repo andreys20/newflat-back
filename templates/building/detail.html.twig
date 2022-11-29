@@ -1,0 +1,200 @@
+
+{% block body %}
+    <section class="building-detail-block">
+        <div class="container p-3 mt-5 mb-5 px-5">
+            <div class="mt-4 mb-5 d-flex flex-wrap">
+                <div class="building-block-nav d-flex flex-wrap w-100 bg-white m-4 p-4">
+                        <a href="#description" class="scroll"><span>Описание</span></a>
+                        <a href="#characteristic" class="scroll"><span>Характеристики</span></a>
+                        <a href="#flats" class="scroll"><span>Планировки</span></a>
+                        <a href="#map" class="scroll"><span>На карте</span></a>
+                </div>
+                <div class="d-flex w-100">
+                    <div class="m-4 bg-white w-100 p-4">
+                        <div class="building-block-title">
+                            <h1 class="text-start">ЖК "All Inclusive"</h1>
+                        </div>
+                        <div class="building-block-info">
+                            <p class="text-start fw-light"><b class="text-muted">пос. Шушары, Старорусский пр., д. 13, кор. 1,2</b></p>
+                            <p class="text-start fw-light"><b class="text-muted">Купчино(20 мин. трансп.)</b></p>
+                        </div>
+                        <div class="building-block-photo">
+                            <div id="slider_detail_building" class="carousel slide" data-bs-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img src="{{ asset('build/images/banners/komnata-dlya-parnya-1.webp') }}" class="d-block w-100 img-fluid" alt="...">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="{{ asset('build/images/banners/komnata-dlya-parnya-1.webp') }}" class="d-block w-100 img-fluid" alt="...">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="{{ asset('build/images/banners/komnata-dlya-parnya-1.webp') }}" class="d-block w-100 img-fluid" alt="...">
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#slider_detail_building" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#slider_detail_building" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="building-block-info-mobile">
+                            <div class="accordion accordion-flush" id="accordionFlushExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-headingOne">
+                                        <button class="accordion-button collapsed px-0" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                            <h2>Об объекте</h2>
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body">
+                                            <p class="fw-light fs-6">2,899,668 - 7,402,781 руб</p>
+                                            <p class="text-muted"><b>Застройщик</b><a class="fw-light" href="">Группа «Аквилон»</a></p>
+                                            <p class="text-muted border-top-grey"><b>Срок сдачи</b>II-2021 - II-2022</p>
+                                            <p class="text-muted border-top-grey"><b>Категория</b><a class="fw-light" href="">Комфорт</a></p>
+                                            <div class="sticky-info-btn">
+                                                <a class="btn" data-bs-toggle="modal" data-bs-target="#feedback-popup">
+                                                    Заказать звонок
+                                                </a>
+                                                <a class="btn btn-map" href="#map">Показать на карте</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="building-block-description" id="description">
+                            <h2 class="py-4">Описание ЖК "All Inclusive"</h2>
+
+                            <p>
+                                Жилой комплекс All Inclusive – это пример рационального,
+                                практичного жилья. Расположен на Старорусском проспекте города Санкт-Петербург.
+                                Жители этого комплекса с легкостью смогут добраться в любую точку культурной столицы
+                                благодаря отличной транспортной развязке и шаговой доступности общественного транспорта.
+                            </p>
+
+                            <p class="text-muted">
+                                <strong>Архитектура</strong>
+                            </p>
+
+                            <p>
+                                Структура жк All Inclusive включает в себя три дома, выполненные в технике монолитно-кирпичных строений.
+                                Такие здания отличаются прочностью и устойчивостью.
+                            </p>
+                            <p>
+                                Три 11-этажные комплексы предусматривают в жк All Inclusive
+                                планировки как квартир компактных, так и просторных, больших.
+                                В наличии квартиры с количеством спальных комнат от 1 до 3,
+                                большинство апартаментов имеют также одну комнату, объединенную с кухней.
+                                Главный принцип в жк All Inclusive планировки квартир должны быть практичными,
+                                каждый квадратный метр должен приносить пользу.
+                            </p>
+                            <p>
+                                Застройщик позаботился о максимальном комфорте будущих владельцев,
+                                поэтому в жк All Inclusive купить апартаменты можно не только с чистовой отделкой,
+                                но и с техникой и мебелью.
+                                Внутренний двор продуман до мелочей – детская площадка,
+                                небольшой водоем, беседка, лавочки, ландшафтный зоопарк,
+                                гостевые парковочные места, спортивный комплекс.
+                                Несмотря на множество достоинств, в жк All Inclusive цены на жилье стартуют от 2,2 млн. рублей.
+                            </p>
+                            <p class="text-muted">
+                                <strong>Инфраструктура</strong>
+                            </p>
+
+                            <p>
+                                Владельцы апартаментов в жк All Inclusive спб могут не беспокоиться о том в какой садик или школу
+                                отдать ребенка. Вблизи расположены несколько школ и садиков, как государственные, так и частные.
+                            </p>
+                            <p>
+                                В пешей доступности множество магазинов, кафе, ресторанов, аптек, супермаркетов, а также медицинских учреждений.
+                            </p>
+                        </div>
+                        <div class="building-block-characteristic" id="characteristic">
+                            <h2 class="py-4">Характеристики</h2>
+                            <p class="d-flex">
+                                <b>Застройщик</b>
+                                <span>Группа «Аквилон»</span>
+                            </p>
+                            <p class="d-flex">
+                                <b>Срок сдачи</b>
+                                <span>II-2021 - II-2022</span>
+                            </p>
+                            <p class="d-flex">
+                                <b>Кол-во комнат</b>
+                                <span>1-3</span>
+                            </p>
+                            <p class="d-flex">
+                                <b>Класс жилья</b>
+                                <span>Комфорт-класс</span>
+                            </p>
+                        </div>
+                        <div class="building-block-flats" id="flats"
+                                {{ stimulus_controller('building-table') }}
+                                {{ stimulus_target('building-table', 'table') }}
+                        >
+                            <h2 class="py-4">Цены</h2>
+                            <div class="flats-list">
+                                {% for i in 0..2 %}
+                                <div class="flats-list__item">
+                                    <div class="flats-list__item-table">
+                                        <table>
+                                            <thead>
+                                            <tr>
+                                                <td>Кол-во комнат</td>
+                                                <td>S общ</td>
+                                                <td>Санузел</td>
+                                                <td>Цена за м<sup>2</sup></td>
+                                                <td>Цена, руб</td>
+                                                <td>Планировка</td>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for i in 0..10 %}
+                                                <tr {% if i >= 6 %}style="display: none"{% endif %}>
+                                                    <td>1 - комн</td>
+                                                    <td>21.77</td>
+                                                    <td>разд</td>
+                                                    <td>105,244</td>
+                                                    <td>2,291,148</td>
+                                                    <td>
+                                                        <a href="/parser/images/allinclusive/1.jpg" class="zoom">
+                                                            <img src="{{ asset('build/images/flats.webp') }}">
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="btn__block d-flex justify-content-center">
+                                        <a class="show-hide btn">Показать все</a>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sticky-info-block m-4 flex-shrink-1">
+                        <div class="sticky-info position-sticky w-100 left-0 top-0 bg-white p-4">
+                            <h2>Об объекте</h2>
+                            <p class="fw-light fs-6">2,899,668 - 7,402,781 руб</p>
+                            <p class="text-muted"><b>Застройщик</b><a class="fw-light" href="">Группа «Аквилон»</a></p>
+                            <p class="text-muted border-top-grey"><b>Срок сдачи</b>II-2021 - II-2022</p>
+                            <p class="text-muted border-top-grey"><b>Категория</b><a class="fw-light" href="">Комфорт</a></p>
+                            <div class="sticky-info-btn">
+                                <a class="btn" data-bs-toggle="modal" data-bs-target="#feedback-popup">
+                                    Заказать звонок
+                                </a>
+                                <a class="btn btn-map" href="#map">Показать на карте</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

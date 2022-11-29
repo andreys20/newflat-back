@@ -1,0 +1,29 @@
+
+{% block body %}
+<section class="order_selection">
+    <div class="cover-container bg-grey">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 p-5">
+                    <img class="img-fluid" src="{{ asset('build/images/illustrations/selecting_parameters.svg') }}" alt="">
+                </div>
+                <div class="col-lg-6 text-start p-5 px-5">
+                    <h2 class="order_selection__header py-4">Индивидуальный подбор по вашим
+                        параметрам</h2>
+                    <p class="order_selection__text py-4">
+                        Оставьте заявку на сайте или позвоните по телефону и наши менеджеры сделают
+                        подборку квартир под ваши требования, бюджет, класс жилья, год сдачи, наличие
+                        отделки и так далее. Услуги подбора абсолютно бесплатны.
+                        Мы являемся квалифицированными специалистами в сегменте новостроек.
+                        База регулярно обновляется.
+                    </p>
+
+                    <button class="btn__blue py-4" data-bs-toggle="modal" data-bs-target="#feedback-popup">
+                        Заказать подбор
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,36 @@
+
+{% block body %}
+    <div class="modal fade" id="feedback-popup" tabindex="-1" aria-labelledby="feedbackModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body px-5 pb-5">
+                    <form>
+                        <h5 class="modal-title pb-2" id="exampleModalLabel">Оставить заявку на подбор</h5>
+                        <p>заполните заявку и наш специалист свяжется с вами</p>
+                        <div class="mb-3">
+                            <input type="email" placeholder="Имя" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                        </div>
+                        <div class="mb-3">
+                            <input
+                                    type="tel"
+                                    placeholder="Телефон"
+                                    class="form-control"
+                                    id="exampleInputPassword1"
+                                    required
+                                    {{ stimulus_controller('inputmask', {mask:'+9(999)999-99-99'}) }}
+                            >
+                        </div>
+                        <div class="mb-3 form-check text-start">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+                            <label class="form-check-label" for="exampleCheck1">Я согласен на обработку персональных данных</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Подобрать квартиру</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

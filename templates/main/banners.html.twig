@@ -1,0 +1,48 @@
+
+{% block body %}
+    <section class="banners-block">
+        <div class="container p-3 mt-5 mb-5 px-5">
+            <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 g-3">
+                <div class="col">
+                    <div class="bg-image shadow-1-strong rounded">
+                        <img src="{{ asset('build/images/banners/map-almaty.png') }}" class="w-100 img-fluid" alt="музей Лувр">
+                        <div class="mask" style="background-color: rgba(0, 0, 0, 0.6)">
+                            <div class="d-flex justify-content-center align-items-center h-100">
+                                <p class="text-white mb-0 fs-3">Новостройки на карте</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mt-4">
+                <div class="col">
+                    <div class="card bg-dark text-white">
+                        <img src="{{ asset('build/images/banners/zogoronaya_tishina.webp') }}" class="card-img" alt="Загородная тишина">
+                        <div class="mask card-img-overlay" style="background-color: rgba(0, 0, 0, 0.6)">
+                            <h5 class="card-title text-start fs-3">Загородная тишина</h5>
+                            <p class="card-text text-start lead fw-line mt-4 banners-desc">Квартиры в области</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card bg-dark text-white">
+                        <img src="{{ asset('build/images/banners/komnata-dlya-parnya-1.webp') }}" class="card-img" alt="Загородная тишина">
+                        <div class="mask card-img-overlay" style="background-color: rgba(0, 0, 0, 0.6)">
+                            <h5 class="card-title text-start fs-3">Скоро ключи</h5>
+                            <p class="card-text text-start lead fw-line mt-4 banners-desc">Квартиры сдаются в этом году</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card bg-dark text-white">
+                        <img src="{{ asset('build/images/banners/distance-sdelka.webp') }}" class="card-img" alt="Загородная тишина">
+                        <div class="mask card-img-overlay" style="background-color: rgba(0, 0, 0, 0.6)">
+                            <h5 class="card-title text-start fs-3">По карману каждому</h5>
+                            <p class="card-text text-start lead fw-line mt-4 banners-desc">Недорогое жилье в Алматы и области</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

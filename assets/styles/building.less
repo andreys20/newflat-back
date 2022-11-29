@@ -1,0 +1,253 @@
+@color-blue: #003290;
+@color-white: #ffffff;
+@color-grey: #f4f4f4;
+
+body {
+  background: @color-grey;
+}
+
+.bg-white {
+  background: #FFFFFF;
+}
+
+.btn {
+  background: @color-blue;
+  font-weight: 400;
+  font-size: 16px;
+  color: @color-white;
+  border-radius: 5px;
+  padding: 0.8em 1em;
+  min-width: 170px;
+  text-align: center;
+  border: 1px solid transparent !important;
+  &__block {
+    padding: 30px 0;
+  }
+}
+
+.btn:hover {
+  border: 1px solid @color-blue !important;
+  color: @color-blue !important;
+  background: #FFFFFF !important;
+}
+
+#slider_detail_building img{
+  max-height: 500px;
+}
+
+.building-detail-block {
+  text-align: left;
+}
+
+.building-detail-block h2, h1{
+  color: #1f2533;
+  font-weight: 300;
+}
+
+.building-detail-block p {
+  line-height: 1.7em;
+}
+
+.building-block-characteristic {
+  text-align: left;
+}
+
+.building-block-characteristic p:not(:last-child) {
+  margin: 0 0 25px;
+}
+
+.building-block-characteristic p, b {
+  min-width: 300px;
+  color: #8f9299;
+  font-size: 16px;
+}
+
+.building-block-characteristic span {
+  width: 100%;
+  font-weight: 300;
+}
+
+.building-block-description p {
+  margin: 0 0 15px;
+  font-size: 14px;
+  color: #8f9299;
+  display: block!important;
+  font-weight: 300;
+}
+
+.building-detail-block .sticky-info h2{
+  font-weight: 800;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 21px;
+}
+
+.building-detail-block .sticky-info p, b{
+  font-weight: 500;
+  margin: 0 0 5px;
+  display: block;
+  line-height: 1;
+}
+
+.building-detail-block .sticky-info p {
+  padding: 20px 0;
+}
+
+.building-detail-block .sticky-info a {
+  border-bottom: 1px solid;
+  text-decoration: none;
+  color: #000000;
+}
+
+.building-detail-block .sticky-info p,b {
+  font-weight: 500;
+  margin: 0 0 10px;
+  color: #999;
+  display: block;
+  line-height: 1;
+}
+
+.building-detail-block {
+  .sticky-info-block {
+    width: 300px;
+    margin: 0 0 0 30px;
+    min-width: 300px;
+  }
+  .border-top-grey {
+    border-top: 1px solid #dadada;
+  }
+
+  .sticky-info-btn a.btn:not(:last-child) {
+    margin: 0 0 15px;
+  }
+
+  .sticky-info-btn a.btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .sticky-info-btn .btn {
+    background: @color-blue;
+    font-weight: 400;
+    font-size: 16px;
+    color: @color-white;
+    border-radius: 5px;
+    padding: 0.8em 1em;
+    min-width: 170px;
+  }
+
+  .sticky-info-block .btn.btn-map {
+    color: #333;
+    font-weight: 500;
+    background: url("../images/button-map.webp") 50%;
+    background-size: cover;
+    border: none;
+  }
+
+  .building-block-nav {
+    background: #fff;
+    border-radius: 4px;
+    padding: 15px 0;
+  }
+
+  .building-block-nav a {
+    font-weight: 500;
+    font-style: normal;
+    font-size: 16px;
+    display: inline-block;
+    padding: 0 35px;
+    color: #8f9299;
+    position: relative;
+    text-decoration: none;
+  }
+
+  .building-block-nav a span {
+    border-bottom: 1px solid;
+  }
+}
+
+.building-block-flats {
+  .flats-list__item:not(:last-child) {
+    margin-bottom: 25px;
+  }
+
+  .flats-list__item-table table {
+    width: 100%;
+    font-size: .9em;
+    border-collapse: collapse;
+  }
+
+  .flats-list__item-table table thead {
+    font-weight: 700;
+    color: #8f9299;
+  }
+
+  .flats-list__item-table table thead td:first-child {
+    color: #8f9299;
+  }
+
+  .flats-list__item-table table td:first-child {
+    color: @color-blue;
+  }
+
+  .flats-list__item-table table thead td {
+    padding: 0 0 10px;
+  }
+
+  .flats-list__item-table table td {
+    text-align: left;
+    width: 12%;
+    padding: 15px 0;
+    font-weight: 700;
+  }
+
+  img {
+    border: 0;
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+.building-block-info-mobile {
+  border-top: 1px solid #dadada;
+  border-bottom: 1px solid #dadada;
+  padding: 15px 0;
+  margin: 15px 0;
+  display: none;
+  .accordion-button:focus {
+    box-shadow: none;
+  }
+
+  a {
+    border-bottom: 1px solid;
+    text-decoration: none;
+    color: #000000;
+  }
+
+  p {
+    font-weight: 500;
+    margin: 0 0 10px;
+    color: #999;
+    display: block;
+    line-height: 1;
+    padding: 20px 0;
+  };
+
+  .accordion-button:not(.collapsed) {
+    background: #FFFFFF;
+  }
+
+  .accordion-body {
+    padding: 15px 0;
+  }
+}
+
+@media screen and (max-width: 1046px) {
+  .sticky-info-block {
+    display: none;
+  }
+
+  .building-block-info-mobile {
+    display: block;
+  }
+}
