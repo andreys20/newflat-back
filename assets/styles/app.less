@@ -280,7 +280,7 @@ input[name="wallet[before]"]
     border: 0;
 }
 
-.form-search button[name="search-submit"] {
+.form-search button.search-submit {
     background-color: @color-blue;
     color: #FFFFFF;
     border: 0;
@@ -614,6 +614,67 @@ section.footer {
     padding: 0 25px 0 15px;
 }
 
+.box-text {
+    overflow: hidden;
+    height: 200px;
+    line-height: 25px;
+}
+
+.box-text:before {
+    content: "";
+    float: left;
+    width: 5px;
+    height: 200px;
+}
+
+.box-text > *:first-child {
+    float: right;
+    width: 100%;
+    margin-left: -5px;
+}
+
+.box-text:after {
+    content: "\02026";
+    box-sizing: content-box;
+    float: right;
+    position: relative;
+    top: -25px;
+    left: 100%;
+    width: 3em;
+    margin-left: -3em;
+    padding-right: 5px;
+    text-align: right;
+    background-size: 100% 100%;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), white 50%, white);
+}
+
+.pagination a {
+    display: inline-block;
+    font-size: 14px;
+    color: @color-white;
+    padding: 5px 15px;
+    border-radius: 2px;
+    background: @color-blue;
+    border: 2px solid @color-blue;
+    margin: 0 3px 0 0;
+    width: 120px;
+}
+
+.pagination a:hover {
+    color: @color-blue;
+    background: @color-white;
+    border: 2px solid @color-blue;
+}
+
+.card-body-img {
+    max-width: 350px;
+    max-height: 250px;
+}
+
+.card-body-img img{
+    width: 350px;
+    height: 250px;
+}
 
 
 

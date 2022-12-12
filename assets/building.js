@@ -8,6 +8,8 @@ function initCarousel() {
     if ($().owlCarousel !== undefined) {
         $('.section_building_slider__list').owlCarousel({
             loop:false,
+            autoHeight: false,
+            autoHeightClass: 'owl-height',
             nav:true,
             dot:true,
             items:1

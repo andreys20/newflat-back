@@ -1,0 +1,5 @@
+fos_elastica:
+    clients:
+        default: { url: '185.116.194.151:9200/' }
+    indexes:
+        krisha_kz: ~

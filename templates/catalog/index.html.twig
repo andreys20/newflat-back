@@ -6,39 +6,7 @@
         <div class="container px-5">
             <div class="search-block row px-5">
                 <div class="col-12">
-                    <form class="form-search">
-                        <div class="row mb-2">
-                            <div class="item col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-3">
-                                <select class="form-select form-select-lg" id="rooms">
-                                    <option selected disabled value="">Комнатность</option>
-                                    <option>Студия</option>
-                                    <option>1-комнт.</option>
-                                    <option>2-комнт.</option>
-                                    <option>3-комнт.</option>
-                                    <option>4-комнт. и более</option>
-                                </select>
-                            </div>
-                            <div class="item col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-4">
-                                <div class="input-group input-group-lg">
-                                    <input type="text" name="wallet[from]" class="form-control" id="wallet" placeholder="От" aria-describedby="inputGroup-sizing-lg">
-                                    <span class="form-control">-</span>
-                                    <input type="text" name="wallet[before]" class="form-control" placeholder="До" aria-describedby="inputGroup-sizing-lg">
-                                </div>
-                            </div>
-                            <div class="item col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-3">
-                                <select class="form-select form-select-lg" id="calendar">
-                                    <option selected disabled value="">Срок сдачи</option>
-                                    <option>Сдан</option>
-                                    <option>2023</option>
-                                    <option>2024</option>
-                                    <option>2025</option>
-                                </select>
-                            </div>
-                            <button name="search-submit" class="item col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-2 fs-5">
-                                Поиск
-                            </button>
-                        </div>
-                    </form>
+                    {% include '/filter/panel.html.twig' %}
                 </div>
             </div>
         </div>

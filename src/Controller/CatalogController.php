@@ -2,26 +2,57 @@
 
 namespace App\Controller;
 
+use App\Services\CatalogService;
+use App\Services\Elasticsearch\Helper;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @Route("/complex", name="app_complex")
+ */
 class CatalogController extends AbstractController
 {
+    public function __construct(
+        private Helper $helper,
+        private CatalogService $catalogService
+    ){}
+
     /**
-     * @Route("/catalog", name="app_catalog")
+     * @Route("/", name="_list")
+     * @param Request $request
+     * @return Response
      */
-    public function index(): Response
+    public function index(Request $request): Response
     {
-        return $this->render('catalog/index.html.twig');
+        $page = $request->query->getInt('page',    0);
+
+        $dataElasticQuery = $this->helper->findPaginationBuildingsList($request);
+        $items = $this->catalogService->getListBuildings($dataElasticQuery->getResults());
+
+        return $this->render('catalog/index.html.twig', [
+            'items' => $items,
+            'before_page' => $page <= 0 ? 0 : $page - 1,
+            'next_page' => $page + 1,
+            'total' => $dataElasticQuery->getTotalHits()
+        ]);
     }
 
     /**
-     * @Route("/catalog/building", name="app_catalog_building")
+     * @Route("/{code}", name="app_catalog_building")
      */
-    public function building(): Response
+    public function building(Request $request): Response
     {
-        return $this->render('building/index.html.twig');
+        if ($request->get('id')) {
+            $itemElasticQuery = $this->helper->findBuilding($request->get('id'));
+            $item = $this->catalogService->getBuilding($itemElasticQuery->getResults()[0]);
+
+            return $this->render('building/index.html.twig', [
+                'item' => $item,
+            ]);
+        } else {
+            dd('Error');
+        }
     }
 }
