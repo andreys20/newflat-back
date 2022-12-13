@@ -67,12 +67,30 @@ class Helper
         return [];
     }
 
+    public function findCountBuildingInDistrict(string $nameDistrict): int
+    {
+        $this->addQuerySearchField('location', $nameDistrict);
+
+        if ($this->client->getIndex(Config::KRISHA_KZ_INDEX)->exists()) {
+            return $this->client->getIndex(Config::KRISHA_KZ_INDEX)->search($this->paramsQuery)->getTotalHits();
+        }
+
+        return 0;
+    }
+
     private function addQuerySearchId(int $buildingId): void
     {
         if ($buildingId) {
             $this->paramsQuery['query']['bool']['filter']['term'] = [
                  'ID.keyword' => $buildingId
             ];
+        }
+    }
+
+    private function addQuerySearchField(string $field, mixed $value): void
+    {
+        if ($field && $value) {
+            $this->paramsQuery['query']['bool']['must']['match'][$field] = $value;
         }
     }
 
@@ -109,6 +127,10 @@ class Helper
 
         if (isset($filter['date'])) {
             $this->paramsQuery['query']['bool']['must']['match']['date'] = $filter['date'];
+        }
+
+        if (isset($filter['location'])) {
+            $this->addQuerySearchField('location', $filter['location']);
         }
 
     }

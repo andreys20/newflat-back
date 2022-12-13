@@ -1,0 +1,35 @@
+<form class="form-search" method="get" action="/complex" {{ stimulus_controller('building-filter-panel') }}>
+    <div class="row mb-2">
+        <div class="item col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-3">
+            <select name="filter[comnatnost]" class="form-select form-select-lg" id="rooms">
+                <option selected disabled value="">Комнатность</option>
+                <option>Студия</option>
+                <option>1-комнт.</option>
+                <option>2-комнт.</option>
+                <option>3-комнт.</option>
+                <option>4-комнт. и более</option>
+            </select>
+        </div>
+        <div class="item col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-4">
+            <div class="input-group input-group-lg">
+                <input type="text" name="filter[price][from]" class="form-control" id="wallet" placeholder="От" aria-describedby="inputGroup-sizing-lg">
+                <span class="form-control">-</span>
+                <input type="text" name="filter[price][to]" class="form-control" placeholder="До" aria-describedby="inputGroup-sizing-lg">
+            </div>
+        </div>
+        <div class="item col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-3">
+            <select name="filter[date]" class="form-select form-select-lg" id="calendar">
+                <option selected disabled value="">Срок сдачи</option>
+                <option value="">Сдан</option>
+                <option value="2023">2023</option>
+                <option value="2024">2024</option>
+                <option value="2025">2025</option>
+            </select>
+        </div>
+        <button class="item col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-2 fs-5 search-submit"
+                {{ stimulus_action('building-filter-panel', 'changeFilter', 'click') }}
+        >
+            Поиск
+        </button>
+    </div>
+</form>

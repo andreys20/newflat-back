@@ -40,7 +40,7 @@ class CatalogController extends AbstractController
     }
 
     /**
-     * @Route("/{code}", name="app_catalog_building")
+     * @Route("/{code}", name="_building")
      */
     public function building(Request $request): Response
     {

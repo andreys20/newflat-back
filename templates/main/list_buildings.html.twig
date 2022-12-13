@@ -6,9 +6,6 @@
             <div class="d-flex pt-5 mx-5 pb-4">
                 <h2 class="me-auto text-start">Быстрый поиск новостроек</h2>
                 <div class="tabs d-flex justify-content-center flex-wrap">
-                    <button class="btn__blue btn__small m-2" data-id="metro-block fs-5">
-                        <span class="fs-6">Метро</span>
-                    </button>
                     <button class="btn__blue btn__small m-2" data-id="location-block">
                         <span class="fs-6">Район</span>
                     </button>
@@ -16,62 +13,20 @@
             </div>
             <div class="list list-buildings text-start mx-5 pb-5">
                 <div class="list_group"></div>
-                <div class="list_group">
-                    <h3>A</h3>
-                    <div class="list-group_item">A disabled item</div>
-                    <div class="list-group_item">A second item</div>
-                    <div class="list-group_item">A third item</div>
-                    <div class="list-group_item">A fourth item</div>
-                    <div class="list-group_item">And a fifth one</div>
-                </div>
-                <div class="list_group">
-                    <h3>A</h3>
-                    <div class="list-group_item">A disabled item</div>
-                    <div class="list-group_item">A second item</div>
-                    <div class="list-group_item">A third item</div>
-                    <div class="list-group_item">A fourth item</div>
-                    <div class="list-group_item">And a fifth one</div>
-                </div>
-                <div class="list_group">
-                    <h3>A</h3>
-                    <div class="list-group_item">A disabled item</div>
-                    <div class="list-group_item">A second item</div>
-                    <div class="list-group_item">A third item</div>
-                    <div class="list-group_item">A fourth item</div>
-                    <div class="list-group_item">And a fifth one</div>
-                </div>
-                <div class="list_group">
-                    <h3>A</h3>
-                    <div class="list-group_item">A disabled item</div>
-                    <div class="list-group_item">A second item</div>
-                    <div class="list-group_item">A third item</div>
-                    <div class="list-group_item">A fourth item</div>
-                    <div class="list-group_item">And a fifth one</div>
-                </div>
-                <div class="list_group">
-                    <h3>A</h3>
-                    <div class="list-group_item">A disabled item</div>
-                    <div class="list-group_item">A second item</div>
-                    <div class="list-group_item">A third item</div>
-                    <div class="list-group_item">A fourth item</div>
-                    <div class="list-group_item">And a fifth one</div>
-                </div>
-                <div class="list_group">
-                    <h3>A</h3>
-                    <div class="list-group_item">A disabled item</div>
-                    <div class="list-group_item">A second item</div>
-                    <div class="list-group_item">A third item</div>
-                    <div class="list-group_item">A fourth item</div>
-                    <div class="list-group_item">And a fifth one</div>
-                </div>
-                <div class="list_group">
-                    <h3>A</h3>
-                    <div class="list-group_item">A disabled item</div>
-                    <div class="list-group_item">A second item</div>
-                    <div class="list-group_item">A third item</div>
-                    <div class="list-group_item">A fourth item</div>
-                    <div class="list-group_item">And a fifth one</div>
-                </div>
+                {% if districts %}
+                    {% for key, item in districts %}
+                        <div class="list_group">
+                            <h3>{{ key }}</h3>
+                            {% for district in item %}
+                                <div class="list-group_item">
+                                    <a class="text-decoration-none text-muted fs-6" href="{{ path('app_complex_list', {'filter[location]': district.name}) }}">
+                                        {{ district.name }} <b class="fs-6">{{ district.count }}</b>
+                                    </a>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+                {% endif %}
             </div>
         </div>
     </div>

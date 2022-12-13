@@ -5,7 +5,7 @@
             <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 g-3">
                 <div class="col">
                     <div class="bg-image shadow-1-strong rounded">
-                        <img src="{{ asset('build/images/banners/map-almaty.png') }}" class="w-100 img-fluid" alt="музей Лувр">
+                        <img loading="lazy" src="{{ asset('build/images/banners/map-almaty.png') }}" class="w-100 img-fluid" alt="Новостройки на карте">
                         <div class="mask" style="background-color: rgba(0, 0, 0, 0.6)">
                             <div class="d-flex justify-content-center align-items-center h-100">
                                 <p class="text-white mb-0 fs-3">Новостройки на карте</p>
@@ -16,31 +16,37 @@
             </div>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mt-4">
                 <div class="col">
+                    <a href="{{ path('app_complex_list', {'filter[location]': 'область'}) }}">
                     <div class="card bg-dark text-white">
-                        <img src="{{ asset('build/images/banners/zogoronaya_tishina.webp') }}" class="card-img" alt="Загородная тишина">
+                        <img loading="lazy" src="{{ asset('build/images/banners/zogoronaya_tishina.webp') }}" class="card-img" alt="Квартиры в области">
                         <div class="mask card-img-overlay" style="background-color: rgba(0, 0, 0, 0.6)">
                             <h5 class="card-title text-start fs-3">Загородная тишина</h5>
                             <p class="card-text text-start lead fw-line mt-4 banners-desc">Квартиры в области</p>
                         </div>
                     </div>
+                        </a>
                 </div>
                 <div class="col">
-                    <div class="card bg-dark text-white">
-                        <img src="{{ asset('build/images/banners/komnata-dlya-parnya-1.webp') }}" class="card-img" alt="Загородная тишина">
-                        <div class="mask card-img-overlay" style="background-color: rgba(0, 0, 0, 0.6)">
-                            <h5 class="card-title text-start fs-3">Скоро ключи</h5>
-                            <p class="card-text text-start lead fw-line mt-4 banners-desc">Квартиры сдаются в этом году</p>
+                    <a href="{{ path('app_complex_list', {'filter[date]': '2023'}) }}">
+                        <div class="card bg-dark text-white">
+                            <img loading="lazy" src="{{ asset('build/images/banners/komnata-dlya-parnya-1.webp') }}" class="card-img" alt="Квартиры сдаются в этом году, Скоро ключи">
+                            <div class="mask card-img-overlay" style="background-color: rgba(0, 0, 0, 0.6)">
+                                <h5 class="card-title text-start fs-3">Скоро ключи</h5>
+                                <p class="card-text text-start lead fw-line mt-4 banners-desc">Квартиры сдаются в этом году</p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
                 <div class="col">
-                    <div class="card bg-dark text-white">
-                        <img src="{{ asset('build/images/banners/distance-sdelka.webp') }}" class="card-img" alt="Загородная тишина">
-                        <div class="mask card-img-overlay" style="background-color: rgba(0, 0, 0, 0.6)">
-                            <h5 class="card-title text-start fs-3">По карману каждому</h5>
-                            <p class="card-text text-start lead fw-line mt-4 banners-desc">Недорогое жилье в Алматы и области</p>
+                    <a href="{{ path('app_complex_list', {'filter[price][to]': '400000'}) }}">
+                        <div class="card bg-dark text-white">
+                            <img loading="lazy" src="{{ asset('build/images/banners/distance-sdelka.webp') }}" class="card-img" alt="Недорогое жилье в Алматы и области">
+                            <div class="mask card-img-overlay" style="background-color: rgba(0, 0, 0, 0.6)">
+                                <h5 class="card-title text-start fs-3">По карману каждому</h5>
+                                <p class="card-text text-start lead fw-line mt-4 banners-desc">Недорогое жилье в Алматы и области</p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>

@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Services\Elasticsearch\Helper;
+use App\Services\Info\Location;
 use App\Services\Utilites\Translit;
 
 class CatalogService
@@ -33,4 +34,18 @@ class CatalogService
     {
         return '/complex/' . Translit::translit($name) . '?id=' . $id;
     }
+
+    public function getDistrictLocationBuilding(): array
+    {
+        foreach (Location::DISTRICT as $item) {
+
+            $data[mb_substr($item, 0, 1)][] = [
+               'name' => $item,
+               'count' => $this->helper->findCountBuildingInDistrict($item)
+            ];
+        }
+
+        return $data ?? [];
+    }
+
 }

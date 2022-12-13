@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('building') }}
+{% endblock %}
+
+{% block body %}
+    <section class="section__catalog_page">
+        <div class="main-page wrapper">
+            <div class="container px-5">
+                <div class="search-block row px-5">
+                    <div class="col-12">
+                        {% include '/filter/panel.html.twig' %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section__article">
+        <div class="container p-3 px-5">
+            <div class="mt-4 mb-5 d-flex flex-wrap">
+                <div class="m-4 bg-white w-100 p-4">
+                    <div class="building-block-title pb-4">
+                        <h1 class="text-start">{{ article.title }}</h1>
+                    </div>
+                    <div class="d-flex justify-content-start">
+                        <img class="img-fluid" src="{{ asset(article.photo) }}" alt="{{ article.title }}">
+                    </div>
+                    <div class="building-block-description" id="description">
+                        <p class="text-start py-4">{{ article.description|nl2br }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('building') }}
+{% endblock %}
