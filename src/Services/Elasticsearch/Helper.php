@@ -125,13 +125,40 @@ class Helper
             }
         }
 
-        if (isset($filter['date'])) {
-            $this->paramsQuery['query']['bool']['must']['match']['date'] = $filter['date'];
+        if (isset($filter['date']) && $filter['date']) {
+            $this->paramsQuery['query']['bool']['must'][]['match']['date'] = $filter['date'];
         }
 
-        if (isset($filter['location'])) {
+        if (isset($filter['location']) && $filter['location']) {
             $this->addQuerySearchField('location', $filter['location']);
         }
 
+        if (isset($filter['developer']) && $filter['developer']) {
+            $this->addQuerySearchField('developer.keyword', $filter['developer']);
+        }
+
+        if (isset($filter['status']) && $filter['status']) {
+            $this->addQuerySearchField('status.keyword', $filter['status']);
+        }
+
+        if (isset($filter['title']) && $filter['title']) {
+            $this->paramsQuery['query']['bool']['must'][]['match']['title'] = $filter['title'];
+        }
+    }
+
+    public function findDevelopersList(): ResultSet|array
+    {
+        $this->paramsQuery = [
+            "_source" => [
+                "developer"
+            ]
+        ];
+        $this->paramsQuery['size'] = 10000;
+
+        if ($this->client->getIndex(Config::KRISHA_KZ_INDEX)->exists()) {
+            return $this->client->getIndex(Config::KRISHA_KZ_INDEX)->search($this->paramsQuery);
+        }
+
+        return [];
     }
 }

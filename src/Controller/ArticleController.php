@@ -7,9 +7,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/article", name="app_article")
- */
 class ArticleController extends AbstractController
 {
     public function __construct(
@@ -17,7 +14,7 @@ class ArticleController extends AbstractController
     ){}
 
     /**
-     * @Route("/{code}", name="_one")
+     * @Route("/article/{code}", name="app_article_one")
      * @param string $code
      * @return Response
      */
@@ -29,4 +26,19 @@ class ArticleController extends AbstractController
             'article' => $item
         ]);
     }
+
+    /**
+     * @Route("/articles", name="app_article_list")
+     * @return Response
+     */
+    public function list(): Response
+    {
+        $articles = $this->article->getList();
+
+        return $this->render('article/list.html.twig', [
+            'articles' => $articles
+        ]);
+    }
+
+
 }

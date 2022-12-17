@@ -1,5 +1,10 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}{{ item.title }}{% endblock %}
+ {% block metaTag %}
+     <meta name="description" content="{{ item.description|slice(0, 120) }}">
+ {% endblock %}
+
 {% block stylesheets %}
     {{ parent() }}
     {{ encore_entry_link_tags('building') }}

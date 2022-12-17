@@ -8,6 +8,7 @@ use App\Services\Utilites\Translit;
 
 class CatalogService
 {
+    private array $countDevelopsArray;
     public function __construct(
         private Helper $helper
     ){}
@@ -48,4 +49,33 @@ class CatalogService
         return $data ?? [];
     }
 
+    public function getDevelopersBuilding(): array
+    {
+        $developers = $this->helper->findDevelopersList();
+
+        foreach ($developers->getResults() as $developer) {
+            $data = $developer->getData();
+            $developName = trim($data['developer']);
+            $key = mb_substr($developName, 0, 1);
+
+            $result[$key][$developName] = [
+                'name' => $developName
+            ];
+
+            $result[$key][$developName]['count'] = $this->getCountDeveloper($developName);
+        }
+
+        return $result ?? [];
+    }
+
+    private function getCountDeveloper($developer): int
+    {
+        if (!isset($this->countDevelopsArray[$developer])) {
+            $this->countDevelopsArray[$developer] = 1;
+            return 1;
+        } else {
+            $this->countDevelopsArray[$developer] = $this->countDevelopsArray[$developer] + 1;
+            return $this->countDevelopsArray[$developer];
+        }
+    }
 }

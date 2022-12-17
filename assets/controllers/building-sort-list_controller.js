@@ -2,11 +2,12 @@ import {Controller} from '@hotwired/stimulus';
 
 /* stimulusFetch: 'lazy' */
 export default class extends Controller {
-    static targets = ['sortSelect'];
+    static targets = ['sortSelect', 'titleCatalog'];
 
     connect() {
         let params = this.getAttr();
         this.initSelect(params);
+
     }
 
     change() {
@@ -49,8 +50,7 @@ export default class extends Controller {
             }
         }
         res += prmName + '=' + val;
-        //window.history.pushState("object or string", "Title", base + '?' + res);
-        //window.location.href = base + '?' + res;
+
         history.pushState(null, null, base + '?' + res);
         return false;
     }

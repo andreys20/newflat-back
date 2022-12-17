@@ -218,12 +218,18 @@ header nav ul a {
     visibility: visible;
     opacity: 1; }
 
-select#rooms {
+div#rooms {
     background: url("../images/logo-home.svg") 20px 50% no-repeat;
+    padding-left: 60px !important;
 }
 
-input#wallet {
+div#wallet {
     background: url("../images/wallet.svg") 20px 50% no-repeat;
+    padding-left: 60px !important;
+}
+
+.form-search input.form-control {
+    padding-left: 15px;
 }
 
 select#calendar {
@@ -240,7 +246,7 @@ select#calendar {
 
 .form-search input {
     border: 0 !important;
-    padding-left: 28% !important;
+    padding-left: 5% !important;
 }
 
 .form-search select {
@@ -576,7 +582,7 @@ section.footer {
     }
 }
 
-.catalog-tags a {
+.catalog-block .catalog-tags a {
     display: inline-block;
     font-size: 14px;
     color: @color-white;
@@ -689,4 +695,16 @@ section.footer {
     max-height: 400px;
 }
 
+.section__articles .box-text {
+    height: 130px;
+}
 
+.section__articles a, a:active, a:hover {
+    text-decoration: none;
+    color: #000000;
+}
+
+.catalog-block .row a, a:active, a:hover {
+    text-decoration: none;
+    color: #000000;
+}

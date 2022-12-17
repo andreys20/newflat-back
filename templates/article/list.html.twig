@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <section class="section__catalog_page">
+        <div class="main-page wrapper">
+            <div class="container px-5">
+                <div class="search-block row px-5">
+                    <div class="col-12">
+                        {% include '/filter/panel.html.twig' %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section__articles">
+        <div class="container p-3 px-5">
+            <div class="d-flex pt-5 mx-5 pb-4">
+                <h2 class="me-auto text-start">Статьи</h2>
+            </div>
+            <div class="row mb-2">
+                <div class="col-md-12">
+                    {% if articles %}
+                        {% for article in articles %}
+                            <a class="card mb-3 cold-md-12" href="{{ path('app_article_one', {code: article.code}) }}">
+                                <div class="row g-0 p-2">
+                                    <div class="col-md-4 card-body-img">
+                                        {% if article.photo %}
+                                            <img src="{{ article.photo }}" class="img-fluid" alt="Загородная тишина">
+                                        {% else %}
+                                            <img src="{{ asset('build/images/banners/zogoronaya_tishina.webp') }}" class="img-fluid" alt="Статья алматы">
+                                        {% endif %}
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="text-start d-flex align-items-center h-100">
+                                            <div class="card-body text-start">
+                                                <p class="card-text text-bold fw-bold">{{ article.title }}</p>
+                                                <p class="card-text text-muted fw-light box-text">
+                                                    {{ article.description }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        {% endfor %}
+                    {% else %}
+                        Ничего не найденно
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

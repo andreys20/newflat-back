@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Services\Info\Article;
+use App\Services\CatalogService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class DeveloperController extends AbstractController
 {
     public function __construct(
-        public Article $article
+        public CatalogService $catalogService
     ){}
 
     /**
@@ -19,7 +19,11 @@ class DeveloperController extends AbstractController
      */
     public function list(): Response
     {
+        $developers = $this->catalogService->getDevelopersBuilding();
+        ksort($developers);
 
-        return $this->render('article/one.html.twig');
+        return $this->render('developer/list.html.twig', [
+            'developers' => $developers
+        ]);
     }
 }

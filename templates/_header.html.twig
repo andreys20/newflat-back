@@ -31,7 +31,7 @@
                     </li>
                 </ul>
                 <ul class="nav nav-pills d-flex">
-                    <li class="nav-item"><a href="services.html" class="nav-link">Статьи</a></li>
+                    <li class="nav-item"><a href="{{ path('app_article_list') }}" class="nav-link">Статьи</a></li>
 {#                    <li class="nav-item"><a href="#" class="nav-link">Язык</a></li>#}
                 </ul>
             </div>
@@ -48,7 +48,7 @@
                         {#                    <li class="active"><a href="index.html">Главная</a></li>#}
                         <li><a href="{{ path('app_complex_list', {'filter[location]': 'Алматы'}) }}">Алматы</a></li>
                         <li><a href="{{ path('app_complex_list', {'filter[location]': 'область'}) }}">Алматинаская область</a></li>
-                        <li><a href="services.html">Застройщики</a></li>
+                        <li><a href="{{ path('app_developer_list') }}">Застройщики</a></li>
                     </ul>
                 </div>
 {#                <div class="block-favorites">#}

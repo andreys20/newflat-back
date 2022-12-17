@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <section class="section__catalog_page">
+        <div class="main-page wrapper">
+            <div class="container px-5">
+                <div class="search-block row px-5">
+                    <div class="col-12">
+                        {% include '/filter/panel.html.twig' %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section__article">
+        <div class="container p-3 px-5">
+            <div class="d-flex pt-5 mx-5 pb-4">
+                <h2 class="me-auto text-start">Застройщики</h2>
+            </div>
+            <div class="list list-buildings text-start mx-5 pb-5">
+                <div class="list_group"></div>
+                {% if developers %}
+                    {% for key, item in developers %}
+                        <div class="list_group">
+                            <h3>{{ key }}</h3>
+                            {% for develop in item %}
+                                <div class="list-group_item">
+                                    <a class="text-decoration-none text-muted fs-6" href="{{ path('app_complex_list', {'filter[developer]': develop.name}) }}">
+                                        {{ develop.name }} <b class="fs-6">{{ develop.count }}</b>
+                                    </a>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
