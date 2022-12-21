@@ -708,3 +708,68 @@ section.footer {
     text-decoration: none;
     color: #000000;
 }
+
+#map {
+    width: 100%;
+    height: 500px;
+}
+
+
+.block-advertising {
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+.block-advertising .item {
+    max-width: 290px;
+    border-radius: 3px;
+    text-align: left;
+    font-size: 1.1em;
+    background: #fff;
+    position: relative;
+    padding: 10px 10px 35px;
+    border: 1px solid #e8e9ea;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0 3px;
+}
+
+.block-advertising .item:after {
+    content: '';
+    position: absolute;
+    left: 10px;
+    bottom: 15px;
+    width: 100%;
+    height: 20px;
+    background: url("../images/reklama.png") 0 50% no-repeat;
+}
+
+.block-advertising .item span {
+    padding: 10px 0;
+}
+
+.block-advertising .item img {
+   width: 100%;
+}
+
+.block-advertising .item span.description {
+    font-size: .9em;
+    line-height: 1.1em;
+    padding-top: 15px;
+    color: #333;
+}
+
+.block-advertising .item span.title {
+    font-weight: 700;
+}
+
+.block-advertising a, a:active, a:hover {
+    text-decoration: none;
+    color: #000000;
+}

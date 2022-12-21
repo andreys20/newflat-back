@@ -55,6 +55,23 @@ class Helper
         return [];
     }
 
+    public function findMapBuildingsList(): ResultSet|array
+    {
+        $this->paramsQuery = [
+            "size" => 10000,
+            "_source" => [
+                'title',
+                'location'
+            ]
+        ];
+
+        if ($this->client->getIndex(Config::KRISHA_KZ_INDEX)->exists()) {
+            return $this->client->getIndex(Config::KRISHA_KZ_INDEX)->search($this->paramsQuery);
+        }
+
+        return [];
+    }
+
     public function findBuilding(int $buildingId): ResultSet|array
     {
         $this->addQueryMaxSize(1);

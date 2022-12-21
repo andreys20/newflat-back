@@ -40,6 +40,21 @@ class CatalogController extends AbstractController
     }
 
     /**
+     * @Route("/map", name="_map_list")
+     * @return Response
+     */
+    public function mapList(): Response
+    {
+
+        $dataElasticQuery = $this->helper->findMapBuildingsList();
+        $items = $this->catalogService->getListBuildingsMap($dataElasticQuery->getResults());
+
+        return $this->render('building/map.html.twig', [
+            'items' => $items
+        ]);
+    }
+
+    /**
      * @Route("/{code}", name="_building")
      */
     public function building(Request $request): Response

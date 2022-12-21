@@ -46,7 +46,8 @@
                                     </h2>
                                     <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                         <div class="accordion-body">
-                                            <p class="fw-light fs-6">{{ item.price }} 〒</p>
+                                            <p class="fw-light fs-6">от {{ item.priceTotal }} 〒</p>
+                                            <p class="fw-light fs-6"><b>Цена за м²</b>{{ item.price }} 〒</p>
                                             <p class="text-muted"><b>Застройщик</b><a class="fw-light" href="">{{ item.developer }}</a></p>
                                             <p class="text-muted border-top-grey"><b>Срок сдачи</b>{{ item.date }}</p>
                                             <p class="text-muted border-top-grey"><b>Категория</b>
@@ -133,11 +134,19 @@
 {#                                {% endfor %}#}
 {#                            </div>#}
 {#                        </div>#}
+                        <div class="building-block-map">
+                            <h2 class="py-4">На карте</h2>
+                            <div id="map"
+                                    {{ stimulus_controller('maps', {data:[item]}) }}
+                                    {{ stimulus_target('maps', 'mapContainer') }}
+                            ></div>
+                        </div>
                     </div>
                     <div class="sticky-info-block m-4 flex-shrink-1">
                         <div class="sticky-info position-sticky w-100 left-0 top-0 bg-white p-4">
                             <h2>Об объекте</h2>
-                            <p class="fw-light fs-6">{{ item.price }} 〒</p>
+                            <p class="fw-light fs-6">от {{ item.priceTotal }} 〒</p>
+                            <p class="fw-light fs-6"><b>Цена за м²</b>{{ item.price }} 〒</p>
                             <p class="text-muted"><b>Застройщик</b><a class="fw-light" href="">{{ item.developer }}</a></p>
                             <p class="text-muted border-top-grey"><b>Срок сдачи</b>{{ item.date }}</p>
                             <p class="text-muted border-top-grey"><b>Категория</b><a class="fw-light" href="">{{ item.parameters['Класс жилья'] | capitalize }}</a></p>

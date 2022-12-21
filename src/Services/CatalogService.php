@@ -27,8 +27,18 @@ class CatalogService
         $data = $item->getData();
 
         $data['detail'] = $this->getDetailUrlBuilding($data['title'], $data['ID']);
+        $data['priceTotal'] = (int)$data['price'] * 40;
 
         return $data;
+    }
+
+    public function getListBuildingsMap(array $items): array
+    {
+        foreach ($items as $item) {
+            $result[] = $item->getData();
+        }
+
+        return $result ?? [];
     }
 
     private function getDetailUrlBuilding($name, $id): string
