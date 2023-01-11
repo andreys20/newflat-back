@@ -1,7 +1,15 @@
 {% block body %}
+    <div class="container mt-5">
+        <nav style="--bs-breadcrumb-divider: '-';" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Главная</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Новостройки</li>
+            </ol>
+        </nav>
+    </div>
     <section class="catalog-block">
-        <div class="container p-3 mt-5 mb-5 px-5 bg-grey">
-            <h2 class="text-start px-3" {{ stimulus_target('building-sort-list', 'titleCatalog') }}>Сдается в 2023</h2>
+        <div class="container p-3 mb-5 px-5 bg-grey">
+            <h2 class="text-start px-3" {{ stimulus_target('building-sort-list', 'titleCatalog') }}>{{ titleBlock }}</h2>
             <p class="text-start fw-light px-3"><b class="text-muted">Найдено {{ total }} жилых комплекса</b></p>
             <div class="catalog-tags d-flex flex-wrap">
                 <a class="btn m-2" href="{{ path('app_complex_list', {'filter[location]': 'Алматы'}) }}">Алматы</a>

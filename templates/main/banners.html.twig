@@ -18,7 +18,7 @@
             </div>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mt-4">
                 <div class="col">
-                    <a href="{{ path('app_complex_list', {'filter[location]': 'область'}) }}">
+                    <a href="{{ path('app_complex_list', {'filter[location]': 'область', 'title-block': 'Квартиры за городом'}) }}">
                     <div class="card bg-dark text-white">
                         <img loading="lazy" src="{{ asset('build/images/banners/zogoronaya_tishina.webp') }}" class="card-img" alt="Квартиры в области">
                         <div class="mask card-img-overlay" style="background-color: rgba(0, 0, 0, 0.6)">
@@ -40,7 +40,7 @@
                     </a>
                 </div>
                 <div class="col">
-                    <a href="{{ path('app_complex_list', {'filter[price][to]': '400000'}) }}">
+                    <a href="{{ path('app_complex_list', {'filter[price][to]': '400000', 'title-block': 'Подборка дешевых квартир в Алматы'}) }}">
                         <div class="card bg-dark text-white">
                             <img loading="lazy" src="{{ asset('build/images/banners/distance-sdelka.webp') }}" class="card-img" alt="Недорогое жилье в Алматы и области">
                             <div class="mask card-img-overlay" style="background-color: rgba(0, 0, 0, 0.6)">

@@ -737,7 +737,7 @@ section.footer {
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin: 0 3px;
+    margin: 4px 3px;
 }
 
 .block-advertising .item:after {
@@ -771,5 +771,21 @@ section.footer {
 
 .block-advertising a, a:active, a:hover {
     text-decoration: none;
+    color: #000000;
+}
+
+@media (max-width: 992px) {
+    .section__catalog_page .search-block {
+        padding-top: 25%;
+    }
+}
+
+@media (max-width: 460px) {
+    .section__catalog_page .search-block {
+        padding-top: 50%;
+    }
+}
+
+.breadcrumb-item a {
     color: #000000;
 }

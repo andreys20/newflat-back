@@ -60,8 +60,10 @@ class Helper
         $this->paramsQuery = [
             "size" => 10000,
             "_source" => [
+                'ID',
                 'title',
-                'location'
+                'location',
+                'price'
             ]
         ];
 
@@ -84,6 +86,18 @@ class Helper
         return [];
     }
 
+    public function findDeveloper(string $developerName): ResultSet|array
+    {
+        $this->addQueryMaxSize(1);
+        $this->addQuerySearchDeveloperName($developerName);
+
+        if ($this->client->getIndex(Config::DEVELOPER_INDEX)->exists()) {
+            return $this->client->getIndex(Config::DEVELOPER_INDEX)->search($this->paramsQuery);
+        }
+
+        return [];
+    }
+
     public function findCountBuildingInDistrict(string $nameDistrict): int
     {
         $this->addQuerySearchField('location', $nameDistrict);
@@ -100,6 +114,15 @@ class Helper
         if ($buildingId) {
             $this->paramsQuery['query']['bool']['filter']['term'] = [
                  'ID.keyword' => $buildingId
+            ];
+        }
+    }
+
+    private function addQuerySearchDeveloperName(string $developerName): void
+    {
+        if ($developerName) {
+            $this->paramsQuery['query']['bool']['filter']['term'] = [
+                'name.keyword' => $developerName
             ];
         }
     }
@@ -150,9 +173,7 @@ class Helper
             $this->addQuerySearchField('location', $filter['location']);
         }
 
-        if (isset($filter['developer']) && $filter['developer']) {
-            $this->addQuerySearchField('developer.keyword', $filter['developer']);
-        }
+        $this->addFilterDeveloper($filter['developer'] ?? null);
 
         if (isset($filter['status']) && $filter['status']) {
             $this->addQuerySearchField('status.keyword', $filter['status']);
@@ -160,6 +181,13 @@ class Helper
 
         if (isset($filter['title']) && $filter['title']) {
             $this->paramsQuery['query']['bool']['must'][]['match']['title'] = $filter['title'];
+        }
+    }
+
+    private function addFilterDeveloper(?string $develop): void
+    {
+        if (isset($develop) && $develop) {
+            $this->addQuerySearchField('developer.keyword', $develop);
         }
     }
 
@@ -171,6 +199,19 @@ class Helper
             ]
         ];
         $this->paramsQuery['size'] = 10000;
+
+        if ($this->client->getIndex(Config::KRISHA_KZ_INDEX)->exists()) {
+            return $this->client->getIndex(Config::KRISHA_KZ_INDEX)->search($this->paramsQuery);
+        }
+
+        return [];
+    }
+
+    public function findBuildingsToDeveloper($developName): ResultSet|array
+    {
+        $this->paramsQuery = [];
+        $this->paramsQuery['size'] = 10000;
+        $this->addQuerySearchField('developer', $developName);
 
         if ($this->client->getIndex(Config::KRISHA_KZ_INDEX)->exists()) {
             return $this->client->getIndex(Config::KRISHA_KZ_INDEX)->search($this->paramsQuery);

@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<section class="section__catalog_page">
+    <div class="main-page wrapper">
+        <div class="container px-5">
+            <div class="search-block row px-5">
+                <div class="col-12">
+                    {% include '/filter/panel.html.twig' %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% include '/developer/element.html.twig' %}
+    {% if develop and buildings %}
+        <section class="section__buildings">
+            <div class="p-3 px-5">
+                <div class="d-flex pt-5 mx-5 pb-4">
+                    <h2 class="me-auto text-start">Объекты {{ develop.name }} на карте</h2>
+                </div>
+                <div class="mx-5 pb-5">
+                    <div id="map"
+                            {{ stimulus_controller('maps', {data:buildings}) }}
+                            {{ stimulus_target('maps', 'mapContainer') }}
+                    ></div>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+{% endblock %}

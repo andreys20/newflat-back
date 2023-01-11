@@ -8,7 +8,7 @@ use App\Services\Utilites\Translit;
 
 class CatalogService
 {
-    private array $countDevelopsArray;
+
     public function __construct(
         private Helper $helper
     ){}
@@ -27,7 +27,8 @@ class CatalogService
         $data = $item->getData();
 
         $data['detail'] = $this->getDetailUrlBuilding($data['title'], $data['ID']);
-        $data['priceTotal'] = (int)$data['price'] * 40;
+        $data['priceTotal'] = number_format((int)$data['price'] * 40, 0, '', ' ');
+        $data['price'] = number_format((int)$data['price'], 0, '', ' ');
 
         return $data;
     }
@@ -35,7 +36,10 @@ class CatalogService
     public function getListBuildingsMap(array $items): array
     {
         foreach ($items as $item) {
-            $result[] = $item->getData();
+            $data = $item->getData();
+            $data['detail'] = $this->getDetailUrlBuilding($data['title'], $data['ID']);
+            $data['priceTotal'] = number_format((int)$data['price'] * 40, 0, '', ' ');
+            $result[] = $data;
         }
 
         return $result ?? [];
@@ -59,33 +63,14 @@ class CatalogService
         return $data ?? [];
     }
 
-    public function getDevelopersBuilding(): array
+    public function getBuildingToDeveloper($developName): array
     {
-        $developers = $this->helper->findDevelopersList();
+        $buildingsQuery = $this->helper->findBuildingsToDeveloper($developName);
 
-        foreach ($developers->getResults() as $developer) {
-            $data = $developer->getData();
-            $developName = trim($data['developer']);
-            $key = mb_substr($developName, 0, 1);
-
-            $result[$key][$developName] = [
-                'name' => $developName
-            ];
-
-            $result[$key][$developName]['count'] = $this->getCountDeveloper($developName);
+        foreach ($buildingsQuery->getResults() as $item) {
+            $result[] = $this->getBuilding($item);
         }
 
         return $result ?? [];
-    }
-
-    private function getCountDeveloper($developer): int
-    {
-        if (!isset($this->countDevelopsArray[$developer])) {
-            $this->countDevelopsArray[$developer] = 1;
-            return 1;
-        } else {
-            $this->countDevelopsArray[$developer] = $this->countDevelopsArray[$developer] + 1;
-            return $this->countDevelopsArray[$developer];
-        }
     }
 }

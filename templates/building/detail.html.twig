@@ -1,8 +1,17 @@
 
 {% block body %}
+    <div class="container mt-5 px-5">
+        <nav style="--bs-breadcrumb-divider: '-';" aria-label="breadcrumb" class="mx-4">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Главная</a></li>
+                <li class="breadcrumb-item"><a href="{{ path('app_complex_list') }}">Новостройки</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ item.title }}</li>
+            </ol>
+        </nav>
+    </div>
     <section class="building-detail-block">
-        <div class="container p-3 mt-5 mb-5 px-5">
-            <div class="mt-4 mb-5 d-flex flex-wrap">
+        <div class="container p-3 mb-5 px-5">
+            <div class="mb-5 d-flex flex-wrap">
                 <div class="building-block-nav d-flex flex-wrap w-100 bg-white m-4 p-4">
                     <a href="#description" class="scroll"><span>Описание</span></a>
                     <a href="#infrastructure" class="scroll"><span>Инфраструктура</span></a>

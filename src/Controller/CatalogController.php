@@ -35,7 +35,8 @@ class CatalogController extends AbstractController
             'items' => $items,
             'before_page' => $page <= 0 ? 0 : $page - 1,
             'next_page' => $page + 1,
-            'total' => $dataElasticQuery->getTotalHits()
+            'total' => $dataElasticQuery->getTotalHits(),
+            'titleBlock' => $request->get('title-block') ?? 'Сдается в 2023'
         ]);
     }
 

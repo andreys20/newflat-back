@@ -14,6 +14,8 @@ export default class extends Controller {
 
     initMap() {
         var data = this.dataValue;
+        var geoList = [];
+        var numArray = 0;
 
         ymaps.ready(function(){
             var myMap = new ymaps.Map('map', {
@@ -21,9 +23,15 @@ export default class extends Controller {
                 zoom: 11
             }, {
                 searchControlProvider: 'yandex#search'
-            });
+            }),
+                clusterer = new ymaps.Clusterer({
+                    preset: 'islands#invertedBlueClusterIcons',
+                    clusterHideIconOnBalloonOpen: false,
+                    geoObjectHideIconOnBalloonOpen: false,
+                    clusterIconColor: '#003290',
+                });
 
-            data.forEach(function(item) {
+            data.forEach(function(item, index) {
                 ymaps.geocode(item.location,{results:1}).then(
                     function(res){
                         var MyGeoObj = res.geoObjects.get(0);
@@ -35,25 +43,33 @@ export default class extends Controller {
                             myMap.setCenter([latitude, longitude]);
                         }
 
-                        var myGeoObject = new ymaps.GeoObject({
-                            // Описание геометрии.
-                            geometry: {
-                                type: "Point",
-                                coordinates: [latitude, longitude]
-                            },
-                            properties: {
+                        geoList[index] = new ymaps.Placemark(
+                            [latitude, longitude],
+                            {
                                 iconContent: item.title,
                                 balloonContentHeader: item.title,
-                                balloonContentBody: "<strong>Адрес:</strong>" + item.location,
+                                balloonContentBody: "<p><strong>Адрес: </strong>" + item.location + "</p>" +
+                                    "<p><strong>Цена: </strong>" + item.priceTotal + " 〒</p>"
+                                ,
+                                balloonContentFooter: "<a href='" + item.detail + "'>Подробная информации</a>"
+                            },
+                            {
+                                preset: 'islands#blueCircleDotIconWithCaption',
+                                iconCaptionMaxWidth: '50',
+                                iconColor: '#003290',
+                                draggable: false
                             }
-                        }, {
-                            preset: 'islands#blackStretchyIcon',
-                            iconColor: '#003290',
-                            draggable: false
-                        });
+                        );
 
-                        console.log(item.title);
-                        myMap.geoObjects.add(myGeoObject);
+                        numArray++;
+                        if (numArray === data.length) {
+                            clusterer.add(geoList);
+                            myMap.geoObjects.add(clusterer);
+
+                            myMap.setBounds(clusterer.getBounds(), {
+                                checkZoomRange: true
+                            });
+                        }
                     });
 
             });
