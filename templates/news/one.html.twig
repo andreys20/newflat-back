@@ -1,8 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ article.title }}{% endblock %}
+{% block title %}{{ news.title }}{% endblock %}
  {% block metaTag %}
-     <meta name="description" content="{{ article.description|slice(0, 120) }}">
+     <meta name="description" content="{{ news.description|slice(0, 120) }}">
  {% endblock %}
 
 {% block stylesheets %}
@@ -26,8 +26,8 @@
         <nav style="--bs-breadcrumb-divider: '-';" aria-label="breadcrumb" class="mx-4">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/">Главная</a></li>
-                <li class="breadcrumb-item"><a href="{{ path('app_article_list') }}">Статьи</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ article.title }}</li>
+                <li class="breadcrumb-item"><a href="{{ path('app_news_list') }}">Новости</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ news.title }}</li>
             </ol>
         </nav>
     </div>
@@ -35,14 +35,17 @@
         <div class="container p-3 px-5">
             <div class="mb-5 d-flex flex-wrap">
                 <div class="bg-white w-100 p-4">
-                    <div class="building-block-title pb-4">
-                        <h1 class="text-start">{{ article.title }}</h1>
+                    <div class="building-block-title pb-4 text-start">
+                        <h1>{{ news.title }}</h1>
+                        <span class="text-muted">{{ news.date }}</span>
                     </div>
                     <div class="d-flex justify-content-start">
-                        <img class="img-fluid" src="{{ asset(article.photo) }}" alt="{{ article.title }}">
+                        <img class="img-fluid" src="{{ news.photo }}" alt="">
                     </div>
                     <div class="building-block-description" id="description">
-                        <p class="text-start py-4">{{ article.description|nl2br }}</p>
+                        <p class="text-start py-4">
+                            {{ news.description|nl2br }}
+                        </p>
                     </div>
                 </div>
             </div>

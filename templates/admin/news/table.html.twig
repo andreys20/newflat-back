@@ -1,0 +1,48 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block body %}
+    {% include 'admin/sidebar/_menu.html.twig' %}
+    <div class="container-fluid mt-3 mb-3 wrap-mobile-filter table-with-filter"
+         data-mobile-filter-show-class="show-mobile-filter"
+    >
+            <div class="col-12 col-lg-12 col-xl-12 col-xxl-12 wrap-table"
+            >
+                <div class="container_table position-relative">
+                    <div class="btn-groups ms-1 ms-lg-4 mt-1 position-absolute top-0 start-0 z-10">
+                        <a href="javascript:void(0)"
+                                {{ stimulus_controller('modal-form', {
+                                    formUrl: path('app_admin_panel_news_new'),
+                                    title: 'Новая новость',
+                                    modalClass: 'news-modal'
+                                }) }}
+                                {{ stimulus_action('modal-form', 'openModal') }}
+                           class="btn btn-blue btn-sm px-3 text-nowrap">Добавить новость</a>
+                    </div>
+                    <div class="table-responsive"
+                            {{ stimulus_controller('table', {
+                                url: path('app_admin_panel_news_list'),
+                                columns: columns,
+                                searchTitle: 'Поиск по названию',
+                                type: 'newsTable'
+                            }) }}
+                    >
+                        <table id="cardsTable" class="table table-hover" aria-describedby="cardsTable">
+                            <thead class="table-light">
+                            {% block cells %}
+                                <tr>
+                                    {% for column in columns %}
+                                        <th class="{{ column.addClass|raw }}"{% if column.title|default('') %}
+                                        title="{{ column.title }}"{% endif %}>{{ column.label|raw }}</th>
+                                    {% endfor %}
+                                </tr>
+                            {% endblock %}
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+    </div>
+{% endblock %}

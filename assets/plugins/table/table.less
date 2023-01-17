@@ -1,0 +1,58 @@
+div.dataTables_wrapper {
+    .container {
+        position: relative;
+    }
+    div.dataTables_processing {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.8);
+        text-align: center;
+        padding: 10px;
+        z-index: 10;
+        border: none;
+        margin: 0;
+        & > div:last-child > div {
+            animation: none;
+        }
+    }
+
+    div.dataTables_filter,
+    div.dataTables_length {
+        input {
+            width: 100%;
+        }
+        .form-select {
+            width: 70px;
+            margin: 0 5px;
+        }
+        label {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            flex-wrap: nowrap;
+        }
+    }
+    .dataTables_paginate .pagination {
+        justify-content: flex-end !important;
+        margin-bottom: 0;
+    }
+}
+table.dataTable {
+    & > thead {
+        .sorting {
+            &:after,
+            &:before {
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 575px) {
+    div.dataTables_wrapper div.dataTables_filter input {
+        margin-left: 0;
+    }
+}

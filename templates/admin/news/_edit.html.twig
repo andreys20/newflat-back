@@ -1,0 +1,4 @@
+
+{{ include('admin/news/_form.html.twig', {action: path('app_admin_panel_news_edit', {id: news.id}), button_label: 'Сохранить'}) }}
+
+{{ include('admin/news/_delete_form.html.twig') }}

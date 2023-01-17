@@ -1,0 +1,58 @@
+<form name="user" method="post" action="{{ action|default('') }}">
+{#    {% for flashError in app.flashes('locations') %}#}
+{#        <div class="alert alert-danger" role="alert">{{ flashError|trans|raw }}</div>#}
+{#    {% endfor %}#}
+    <div class="mb-3 required">
+        <input type="text"
+               id="news_title"
+               name="news[title]"
+               required="required"
+               class="form-control"
+               placeholder="Заголовок"
+               value="{{ news.title|default('') }}">
+    </div>
+    <div class="mb-3 required">
+        <div class="input-group">
+            <textarea
+                    class="form-control"
+                    name="news[description]"
+                    aria-label="Содержание"
+                    placeholder="Содержание"
+            >{{ news.description|default('') }}</textarea>
+        </div>
+    </div>
+    <div class="mb-3 required">
+        <input type="file"
+               id="news_photo"
+               name="news[photo]"
+               class="form-control"
+               value="{{ news.photo|default('') }}"
+               required
+               placeholder="Прикрепите файл"
+               accept="image/jpeg,image/webp,image/jpg,image/png,image/gif,application/pdf,application/x-pdf"
+        >
+    </div>
+    <div class="mb-3 required">
+        <input type="text"
+               id="news_code"
+               name="news[code]"
+               required="required"
+               class="form-control"
+               placeholder="Символьный код"
+               value="{{ news.code|default('') }}">
+    </div>
+    <div class="mb-3 required">
+        <input type="number"
+               id="news_sort"
+               name="news[sort]"
+               required="required"
+               class="form-control"
+               placeholder="Порядок сортировки"
+               value="{{ news.sort|default('') }}">
+    </div>
+    <div class="d-grid gap-2 my-4{{ button_label|default('') ? ' d-sm-flex justify-content-sm-end ms-sm-3' : '' }}">
+        <button class="btn btn-blue btn-block{{ button_label|default('') ? ' col-sm-6' : '' }}"
+                type="submit">{{ button_label|default('Добавить') }}</button>
+    </div>
+    <input type="hidden" name="_token" value="{{ csrf_token(news.id|default('') ? 'edit' ~ news.id : 'new') }}">
+</form>

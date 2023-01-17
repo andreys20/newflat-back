@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <section class="section__catalog_page">
+        <div class="main-page wrapper">
+            <div class="container px-5">
+                <div class="search-block row px-5">
+                    <div class="col-12">
+                        {% include '/filter/panel.html.twig' %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section__news">
+            <div class="container mt-5">
+                <nav style="--bs-breadcrumb-divider: '-';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Главная</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Новости</li>
+                    </ol>
+                </nav>
+            </div>
+            <section class="catalog-block">
+                <div class="container p-3 mb-5 px-5 bg-grey">
+                    <h2 class="text-start px-3">Новости</h2>
+                    <div class="row mb-2">
+                        <div class="col-md-12">
+                            {% if items %}
+                                {% for item in items %}
+                                    <a class="card mb-3 cold-md-12" href="{{ item.detail }}">
+                                        <div class="row g-0 p-2">
+                                            <div class="col-md-4 card-body-img">
+                                                <img src="{{ item.photo }}" class="img-fluid" alt="{{ item.title }}">
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="text-start d-flex align-items-center h-100">
+                                                    <div class="card-body text-start">
+                                                        <p class="card-text text-muted fw-light fw-bold">{{ item.date}}</p>
+                                                        <h3 class="card-text box-text text-bold">
+                                                            {{ item.title}}
+                                                        </h3>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                {% endfor %}
+                            {% else %}
+                                Этот раздел пустой
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="pagination d-flex justify-content-between"
+                            {{ stimulus_controller('news-paginate-list') }}
+                    >
+                        <a class="btn m-2" data-name="page" data-value="{{ before_page }}" {{ stimulus_action('news-paginate-list', 'click', 'click') }}>Предыдущая</a>
+                        <a class="btn m-2" data-name="page" data-value="{{ next_page }}" {{ stimulus_action('news-paginate-list', 'click', 'click') }}>Следующая</a>
+                    </div>
+                </div>
+            </section>
+    </section>
+{% endblock %}

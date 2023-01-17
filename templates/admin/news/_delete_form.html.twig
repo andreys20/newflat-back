@@ -1,0 +1,13 @@
+<form method="post" action="{{ path('app_admin_panel_news_delete', {id: news.id}) }}"
+      class="d-sm-flex justify-content-sm-start my-4 my-sm-0 me-sm-3 col-sm-6 position-relative button-delete"
+      {{ stimulus_controller('answer-modal', {
+          title: 'Вы уверены, что хотите удалить эту новость?',
+          text: '',
+          confirmTitle: 'Новость была успешно удален!',
+          permissionDelete: true
+      }) }}
+    {{ stimulus_action('answer-modal', 'submit') }}
+>
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ news.id) }}">
+    <button class="btn btn-outline-danger">Удалить</button>
+</form>
