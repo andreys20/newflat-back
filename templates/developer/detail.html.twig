@@ -21,7 +21,10 @@
                 </div>
                 <div class="mx-5 pb-5">
                     <div id="map"
-                            {{ stimulus_controller('maps', {data:buildings}) }}
+                            {{ stimulus_controller('maps', {
+                                data:buildings,
+                                center:'default'
+                            }) }}
                             {{ stimulus_target('maps', 'mapContainer') }}
                     ></div>
                 </div>

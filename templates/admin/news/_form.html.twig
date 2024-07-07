@@ -21,13 +21,12 @@
             >{{ news.description|default('') }}</textarea>
         </div>
     </div>
-    <div class="mb-3 required">
+    <div class="mb-3">
         <input type="file"
                id="news_photo"
                name="news[photo]"
                class="form-control"
                value="{{ news.photo|default('') }}"
-               required
                placeholder="Прикрепите файл"
                accept="image/jpeg,image/webp,image/jpg,image/png,image/gif,application/pdf,application/x-pdf"
         >
@@ -45,7 +44,6 @@
         <input type="number"
                id="news_sort"
                name="news[sort]"
-               required="required"
                class="form-control"
                placeholder="Порядок сортировки"
                value="{{ news.sort|default('') }}">

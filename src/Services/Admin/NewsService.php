@@ -4,6 +4,7 @@ namespace App\Services\Admin;
 
 use App\Entity\News;
 use App\Repository\NewsRepository;
+use App\Services\Constant\DateConstant;
 use App\Services\FileService;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
@@ -20,7 +21,8 @@ class NewsService
         private EntityManagerInterface $em,
         private Environment $twig,
         public FileService $fileService,
-        private ParameterBagInterface $params
+        private ParameterBagInterface $params,
+        private DateConstant $dateConstant
     )
     {}
 
@@ -129,7 +131,7 @@ class NewsService
         $news->setTitle($newsModel['title']);
         $news->setDescription($newsModel['description']);
         $news->setCode($newsModel['code']);
-        $news->setSort($newsModel['sort']);
+        $news->setSort(!empty($newsModel['sort']) ? $newsModel['sort'] : null);
         $news->setCreatedAt(new DateTimeImmutable());
 
         $this->em->persist($news);
@@ -157,5 +159,18 @@ class NewsService
         } catch (Exception $e) {
             return '';
         }
+    }
+
+    public function getNewsSlider():array
+    {
+        $news = $this->newsRepository->getListSlider();
+        usort($news, static fn($a, $b) => ($a['sort'] < $b['sort']));
+
+        foreach ($news as $key => $item) {
+            $news[$key]['date'] = $this->dateConstant->getDateWithYearOrNot($item['createdAt']);
+            $news[$key]['photo'] = $item['photo'] ? $this->params->get('news_images_url') . $item['photo'] : '';
+        }
+
+        return $news;
     }
 }

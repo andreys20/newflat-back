@@ -26,3 +26,8 @@ services:
     App\Controller\:
         resource: '../src/Controller/'
         tags: [ 'controller.service_arguments' ]
+
+    App\EventListener\ExceptionListener:
+        arguments: [ "@service_container", "@logger" ]
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception, method: onCoreException, priority: 2 }

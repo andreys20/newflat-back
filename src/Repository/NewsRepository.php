@@ -148,4 +148,15 @@ class NewsRepository extends ServiceEntityRepository
 
         return $this->getCountResult($query);
     }
+
+    public function getListSlider()
+    {
+        $query = $this->createQueryBuilder('News')
+            ->select('News')
+            ->addOrderBy(new OrderBy("News.createdAt", 'desc'))
+            ->setMaxResults(10)
+        ;
+
+        return $query->getQuery()->getArrayResult();
+    }
 }

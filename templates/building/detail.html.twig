@@ -146,7 +146,10 @@
                         <div class="building-block-map">
                             <h2 class="py-4">На карте</h2>
                             <div id="map"
-                                    {{ stimulus_controller('maps', {data:[item]}) }}
+                                    {{ stimulus_controller('maps', {
+                                        data:[item],
+                                        center:'default'
+                                    }) }}
                                     {{ stimulus_target('maps', 'mapContainer') }}
                             ></div>
                         </div>

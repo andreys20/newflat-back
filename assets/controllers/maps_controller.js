@@ -5,7 +5,8 @@ export default class extends Controller {
     static targets = ['mapContainer'];
 
     static values = {
-        data: Array
+        data: Array,
+        center: String
     }
 
     connect() {
@@ -14,12 +15,13 @@ export default class extends Controller {
 
     initMap() {
         var data = this.dataValue;
+        var centerOption = this.centerValue;
         var geoList = [];
         var numArray = 0;
 
         ymaps.ready(function(){
             var myMap = new ymaps.Map('map', {
-                center: [51.1525297721169,71.48677055029289],
+                center: [43.263113407323516,76.94720125390623],
                 zoom: 11
             }, {
                 searchControlProvider: 'yandex#search'
@@ -66,9 +68,16 @@ export default class extends Controller {
                             clusterer.add(geoList);
                             myMap.geoObjects.add(clusterer);
 
-                            myMap.setBounds(clusterer.getBounds(), {
-                                checkZoomRange: true
-                            });
+                            if (centerOption === 'custom')
+                            {
+                                console.log('almaty');
+                                myMap.setCenter([43.263113407323516,76.94720125390623]);
+                                myMap.setZoom(10);
+                            } else {
+                                myMap.setBounds(clusterer.getBounds(), {
+                                    checkZoomRange: true
+                                });
+                            }
                         }
                     });
 

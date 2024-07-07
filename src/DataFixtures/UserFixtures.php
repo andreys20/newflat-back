@@ -31,7 +31,7 @@ class UserFixtures extends Fixture implements FixtureGroupInterface
     {
         $usersData = [
             0 => [
-                'email' => 'admin@newlat.ru',
+                'email' => 'admin@newflat.ru',
                 'role' => ['ROlE_ADMIN'],
                 'password' => '4sMKAx0sMW'
             ]

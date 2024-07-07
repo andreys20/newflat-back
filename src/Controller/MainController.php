@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Services\Admin\NewsService;
 use App\Services\CatalogService;
 use App\Services\Info\Article;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -13,7 +14,8 @@ class MainController extends AbstractController
 {
     public function __construct(
         private Article $article,
-        private CatalogService $catalogService
+        private CatalogService $catalogService,
+        private NewsService $newsService
     ){}
     /**
      * @Route("", name="app_main")
@@ -22,10 +24,12 @@ class MainController extends AbstractController
     {
         $articles = $this->article->getList();
         $districts = $this->catalogService->getDistrictLocationBuilding();
+        $news = $this->newsService->getNewsSlider();
 
         return $this->render('main/index.html.twig', [
             'articles' => $articles,
-            'districts' => $districts
+            'districts' => $districts,
+            'news' => $news
         ]);
     }
 }
