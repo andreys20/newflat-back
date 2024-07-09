@@ -18,7 +18,7 @@
             </div>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mt-4">
                 <div class="col">
-                    <a href="{{ path('app_complex_list', {'filter[location]': 'область', 'title-block': 'Квартиры за городом'}) }}">
+                    <a href="{{ path('app_complex_list', {'filter[location]': 'Подмосковье', 'title-block': 'Квартиры за городом'}) }}">
                     <div class="card bg-dark text-white">
                         <img loading="lazy" src="{{ asset('build/images/banners/zogoronaya_tishina.webp') }}" class="card-img" alt="Квартиры в области">
                         <div class="mask card-img-overlay" style="background-color: rgba(0, 0, 0, 0.6)">
@@ -29,7 +29,7 @@
                         </a>
                 </div>
                 <div class="col">
-                    <a href="{{ path('app_complex_list', {'filter[date]': '2023'}) }}">
+                    <a href="{{ path('app_complex_list', {'filter[date]': 'now'|date('Y') }) }}">
                         <div class="card bg-dark text-white">
                             <img loading="lazy" src="{{ asset('build/images/banners/komnata-dlya-parnya-1.webp') }}" class="card-img" alt="Квартиры сдаются в этом году, Скоро ключи">
                             <div class="mask card-img-overlay" style="background-color: rgba(0, 0, 0, 0.6)">
@@ -40,12 +40,12 @@
                     </a>
                 </div>
                 <div class="col">
-                    <a href="{{ path('app_complex_list', {'filter[price][to]': '400000', 'title-block': 'Подборка дешевых квартир в Алматы'}) }}">
+                    <a href="{{ path('app_complex_list', {'filter[price][to]': '400000', 'title-block': 'Подборка дешевых квартир в Москве и области'}) }}">
                         <div class="card bg-dark text-white">
-                            <img loading="lazy" src="{{ asset('build/images/banners/distance-sdelka.webp') }}" class="card-img" alt="Недорогое жилье в Алматы и области">
+                            <img loading="lazy" src="{{ asset('build/images/banners/distance-sdelka.webp') }}" class="card-img" alt="Недорогое жилье в Москве и области">
                             <div class="mask card-img-overlay" style="background-color: rgba(0, 0, 0, 0.6)">
                                 <h5 class="card-title text-start fs-3">По карману каждому</h5>
-                                <p class="card-text text-start lead fw-line mt-4 banners-desc">Недорогое жилье в Алматы и области</p>
+                                <p class="card-text text-start lead fw-line mt-4 banners-desc">Недорогое жилье в Москве и области</p>
                             </div>
                         </div>
                     </a>

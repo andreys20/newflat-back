@@ -1,5 +1,9 @@
 fos_elastica:
     clients:
-        default: { url: '185.116.194.151:9200/' }
+        default: {
+            url: '127.0.0.1:9200/',
+            username: 'elastic',
+            password: 'elastic'
+        }
     indexes:
-        krisha_kz: ~
+        mskguru: ~

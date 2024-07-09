@@ -12,10 +12,10 @@
             <h2 class="text-start px-3" {{ stimulus_target('building-sort-list', 'titleCatalog') }}>{{ titleBlock }}</h2>
             <p class="text-start fw-light px-3"><b class="text-muted">Найдено {{ total }} жилых комплекса</b></p>
             <div class="catalog-tags d-flex flex-wrap">
-                <a class="btn m-2" href="{{ path('app_complex_list', {'filter[location]': 'Алматы'}) }}">Алматы</a>
-                <a class="btn m-2" href="{{ path('app_complex_list', {'filter[location]': 'Астана'}) }}">Астана</a>
-                <a class="btn m-2" href="{{ path('app_complex_list', {'filter[status]': 'Строящийся'}) }}">Строящийся</a>
-                <a class="btn m-2" href="{{ path('app_complex_list', {'filter[status]': 'Сдан в эксплуатацию'}) }}">Сдан в эксплуатацию</a>
+                <a class="btn m-2" href="{{ path('app_complex_list', {'filter[location]': 'Москва'}) }}">Москва</a>
+                <a class="btn m-2" href="{{ path('app_complex_list', {'filter[location]': 'Подмосковье'}) }}">Подмосковье</a>
+                <a class="btn m-2" href="{{ path('app_complex_list', {'filter[date]': 'now'|date('Y') + 1}) }}">В следующем году</a>
+                <a class="btn m-2" href="{{ path('app_complex_list', {'filter[status]': 'Готовые'}) }}">Сдан в эксплуатацию</a>
             </div>
             <div class="catalog-sort d-flex flex-wrap align-items-center p-3">
                 <span>Сортировать по:</span>
@@ -27,8 +27,8 @@
                                 {{ stimulus_action('building-sort-list', 'change', 'change') }}
                         >
                             <option selected disabled value="">по цене</option>
-                            <option name="price" value="asc">по цене ↑</option>
-                            <option name="price" value="desc">по цене ↓</option>
+                            <option name="price_min" value="asc">по цене ↑</option>
+                            <option name="price_min" value="desc">по цене ↓</option>
                         </select>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                                                 <div class="text-start d-flex align-items-center h-100">
                                                     <div class="card-body text-start">
                                                         <h3 class="card-title">{{ item.title }}</h3>
-                                                        <p class="card-text text-muted">{{ item.price }} 〒</p>
+                                                        <p class="card-text text-muted">{{ item.price }} ₽</p>
                                                         <p class="card-text">{{ item.location }}</p>
                                                         <p class="card-text"><small class="text-muted">Застройщик: {{ item.developer }}</small></p>
                                                         <p><b class="text-muted">Срок сдачи:</b> {{ item.date }}</p>

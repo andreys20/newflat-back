@@ -66,6 +66,7 @@ class ExceptionListener
 
         $this->sendToLog($event);
 
+        dd($exception);
         if (!$event->getRequest()->isXmlHttpRequest()) {
             $event->setResponse($this->responseErrorPage($exception));
         } else {

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html class="h-100" lang="ru">
+<head>
+    {% block metaTag %}
+        <meta name="description" content="Большой и удобный портал про новостройки Москве и Московской области. От студий до пентхаусов. Все районы и сегменты жилья.">
+    {% endblock %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}NewFlat.kz - большой портал недвижимости!{% endblock %}</title>
+    <link rel="icon" href="{{ asset('build/images/favicon.svg') }}">
+    {# Run composer require symfony/webpack-encore-bundle to start using Symfony UX #}
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=9c89a3bb-1e7f-4595-bc37-97c1c6a00080&lang=ru_RU" type="text/javascript"></script>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+        (function(m,e,t,r,i,k,a){m[i]=m[i]function(){(m[i].a=m[i].a[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(91746726, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true,
+            webvisor:true
+        });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/91746726" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+</head>
+
+{% block body %}
+    <main class="form-signin text-center d-flex justify-content-center align-items-center">
+        <div class="w-100">
+            <form method="post">
+                <img class="mb-4" src="{{ asset('build/images/logo-black.svg') }}" alt="" >
+                {% if error %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+
+                {% if app.user %}
+                    <div class="mb-3">
+                        You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+                    </div>
+                {% endif %}
+
+                <h1 class="h3 mb-3 fw-normal">Авторизация</h1>
+                <div class="form-floating mb-4">
+                    <input type="email" value="{{ last_username }}" class="form-control" name="email" id="inputEmail" placeholder="name@example.com" required autofocus>
+                    <label for="floatingInput">Email</label>
+                </div>
+                <div class="form-floating mb-4">
+                    <input type="password" class="form-control" name="password" id="inputPassword" placeholder="Password" autocomplete="current-password" required>
+                    <label for="floatingPassword">Password</label>
+                </div>
+                {#        <label for="inputEmail">Email</label>#}
+                {#        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>#}
+                {#        <label for="inputPassword">Password</label>#}
+                {#        <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>#}
+
+                <input type="hidden" name="_csrf_token"
+                       value="{{ csrf_token('authenticate') }}"
+                >
+
+                <button class="w-100 btn btn-lg btn-primary" type="submit">
+                    Войти
+                </button>
+            </form>
+        </div>
+    </main>
+
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+{% endblock %}
+</html>

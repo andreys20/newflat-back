@@ -48,6 +48,7 @@ class Helper
         $this->addQuerySort($sort, $order);
         $this->addQueryFilter($request);
 
+//        dd($this->paramsQuery);
         if ($this->client->getIndex(Config::KRISHA_KZ_INDEX)->exists()) {
             return $this->client->getIndex(Config::KRISHA_KZ_INDEX)->search($this->paramsQuery);
         }
@@ -60,15 +61,19 @@ class Helper
         $this->paramsQuery = [
             "size" => 10000,
             "_source" => [
-                'ID',
+                'id',
                 'title',
                 'location',
-                'price'
+                'price_min',
+                'price_max'
             ]
         ];
 
+
         if ($this->client->getIndex(Config::KRISHA_KZ_INDEX)->exists()) {
-            return $this->client->getIndex(Config::KRISHA_KZ_INDEX)->search($this->paramsQuery);
+            try {
+                return $this->client->getIndex(Config::KRISHA_KZ_INDEX)->search($this->paramsQuery);
+            } catch (Exception $exception) {}
         }
 
         return [];
@@ -113,7 +118,7 @@ class Helper
     {
         if ($buildingId) {
             $this->paramsQuery['query']['bool']['filter']['term'] = [
-                 'ID.keyword' => $buildingId
+                 'id.keyword' => $buildingId
             ];
         }
     }
@@ -157,11 +162,11 @@ class Helper
 
         if (isset($filter['price'])) {
             if (isset($filter['price']['from']) && !empty($filter['price']['from'])) {
-                $this->paramsQuery['query']['bool']['filter']['range']['price']['gte'] = $filter['price']['from'];
+                $this->paramsQuery['query']['bool']['filter']['range']['price_min']['gte'] = $filter['price']['from'];
             }
 
             if (isset($filter['price']['to']) && !empty($filter['price']['to'])) {
-                $this->paramsQuery['query']['bool']['filter']['range']['price']['lte'] = $filter['price']['to'];
+                $this->paramsQuery['query']['bool']['filter']['range']['price_min']['lte'] = $filter['price']['to'];
             }
         }
 

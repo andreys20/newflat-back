@@ -26,7 +26,9 @@ class CatalogController extends AbstractController
      */
     public function index(Request $request): Response
     {
+        $filter = $request->get('filter', []);
         $page = $request->query->getInt('page',    0);
+        $date = $filter['date'] ?? '2025';
 
         $dataElasticQuery = $this->helper->findPaginationBuildingsList($request);
         $items = $this->catalogService->getListBuildings($dataElasticQuery->getResults());
@@ -36,7 +38,7 @@ class CatalogController extends AbstractController
             'before_page' => $page <= 0 ? 0 : $page - 1,
             'next_page' => $page + 1,
             'total' => $dataElasticQuery->getTotalHits(),
-            'titleBlock' => $request->get('title-block') ?? 'Сдается в 2023'
+            'titleBlock' => $request->get('title-block') ?? "Сдается в $date"
         ]);
     }
 

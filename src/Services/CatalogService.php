@@ -26,9 +26,9 @@ class CatalogService
     {
         $data = $item->getData();
 
-        $data['detail'] = $this->getDetailUrlBuilding($data['title'], $data['ID']);
-        $data['priceTotal'] = number_format((int)$data['price'] * 40, 0, '', ' ');
-        $data['price'] = number_format((int)$data['price'], 0, '', ' ');
+        $data['detail'] = $this->getDetailUrlBuilding($data['title'], $data['id']);
+        $data['priceTotal'] = number_format((int)$data['price_min'], 0, '', ' ');
+        $data['price'] = number_format((int)$data['price_min'], 0, '', ' ');
 
         return $data;
     }
@@ -37,8 +37,8 @@ class CatalogService
     {
         foreach ($items as $item) {
             $data = $item->getData();
-            $data['detail'] = $this->getDetailUrlBuilding($data['title'], $data['ID']);
-            $data['priceTotal'] = number_format((int)$data['price'] * 40, 0, '', ' ');
+            $data['detail'] = $this->getDetailUrlBuilding($data['title'], $data['id']);
+            $data['priceTotal'] = number_format((int)$data['price_min'], 0, '', ' ');
             $result[] = $data;
         }
 

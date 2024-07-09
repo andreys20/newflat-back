@@ -21,8 +21,8 @@ export default class extends Controller {
 
         ymaps.ready(function(){
             var myMap = new ymaps.Map('map', {
-                center: [43.263113407323516,76.94720125390623],
-                zoom: 11
+                center: [55.751574, 37.573856],
+                zoom: 8
             }, {
                 searchControlProvider: 'yandex#search'
             }),
@@ -51,7 +51,7 @@ export default class extends Controller {
                                 iconContent: item.title,
                                 balloonContentHeader: item.title,
                                 balloonContentBody: "<p><strong>Адрес: </strong>" + item.location + "</p>" +
-                                    "<p><strong>Цена: </strong>" + item.priceTotal + " 〒</p>"
+                                    "<p><strong>Цена: </strong>" + item.priceTotal + " ₽</p>"
                                 ,
                                 balloonContentFooter: "<a href='" + item.detail + "'>Подробная информации</a>"
                             },
@@ -71,8 +71,8 @@ export default class extends Controller {
                             if (centerOption === 'custom')
                             {
                                 console.log('almaty');
-                                myMap.setCenter([43.263113407323516,76.94720125390623]);
-                                myMap.setZoom(10);
+                                myMap.setCenter([55.751574, 37.573856]);
+                                myMap.setZoom(7);
                             } else {
                                 myMap.setBounds(clusterer.getBounds(), {
                                     checkZoomRange: true
