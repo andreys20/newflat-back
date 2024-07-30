@@ -154,6 +154,7 @@ class NewsRepository extends ServiceEntityRepository
         $query = $this->createQueryBuilder('News')
             ->select('News')
             ->addOrderBy(new OrderBy("News.createdAt", 'desc'))
+            ->addOrderBy(new OrderBy("News.sort", 'desc'))
             ->setMaxResults(10)
         ;
 

@@ -7,3 +7,4 @@ fos_elastica:
         }
     indexes:
         mskguru: ~
+        mskguru_developers: ~

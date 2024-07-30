@@ -23,34 +23,50 @@ class ImportJsonData extends Command
             ->setBasicAuthentication('elastic', 'elastic')
             ->build();
 
-        $ourData = file_get_contents("data.json");
+        $ourData = file_get_contents("data_developers.json");
+
+
+        try {
         $dates = json_decode($ourData);
+        } catch (\Exception $exception) {
+            dd($exception);
+        }
 
         $params = ['body' => []];
 
         foreach ($dates as $key => $data) {
-
             $params['body'][] = [
                 'index' => [
-                    '_index' => 'mskguru',
+                    '_index' => 'mskguru_developers',
                     '_id'    => $key
                 ]
             ];
 
             $params['body'][] = [
-                'id'     => $data->ID,
-                'url' => $data->url,
-                'title' => $data->title,
-                'price_min' => $data->price_min,
-                'price_max' => $data->price_max,
-                'status' => $data->status,
-                'date' => $data->date,
-                'location' => $data->location,
-                'developer' => $data->developer,
-                'images' => $data->images,
-                'parameters' => $data->parameters,
-                'description' => $data->description,
+                'name'     => $data->name,
+                'logo' => $data->logo,
+                'year' => $data->year,
+                'rented_qnty' => $data->rented_qnty,
+                'being_built_qnty' => $data->being_built_qnty,
+                'description' => $data->description
             ];
+
+//            $params['body'][] = [
+//                'id'     => $data->ID,
+//                'url' => $data->url,
+//                'title' => $data->title,
+//                'price_min' => $data->price_min,
+//                'price_max' => $data->price_max,
+//                'price_per_metr_max' => $data->price_per_metr_max,
+//                'price_per_metr_min' => $data->price_per_metr_min,
+//                'status' => $data->status,
+//                'date' => $data->date,
+//                'location' => $data->location,
+//                'developer' => $data->developer,
+//                'images' => $data->images,
+//                'parameters' => $data->parameters,
+//                'description' => $data->description,
+//            ];
 
             if ($key % 1000 == 0) {
                 $responses = $client->bulk($params);

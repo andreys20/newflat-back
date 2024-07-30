@@ -47,8 +47,11 @@ class DeveloperController extends AbstractController
                 'develop' => $develop,
                 'buildings' => $buildings
             ]);
-        } else {
-            dd('Error');
         }
+
+        return $this->render('developer/detail.html.twig', [
+            'develop' => [],
+            'buildings' => []
+        ]);
     }
 }

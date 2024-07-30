@@ -48,7 +48,6 @@ class CatalogController extends AbstractController
      */
     public function mapList(): Response
     {
-
         $dataElasticQuery = $this->helper->findMapBuildingsList();
         $items = $this->catalogService->getListBuildingsMap($dataElasticQuery->getResults());
 
@@ -69,8 +68,10 @@ class CatalogController extends AbstractController
             return $this->render('building/index.html.twig', [
                 'item' => $item,
             ]);
-        } else {
-            dd('Error');
         }
+
+        return $this->render('building/index.html.twig', [
+            'item' => [],
+        ]);
     }
 }

@@ -24,7 +24,7 @@ class UserFixtures extends Fixture implements FixtureGroupInterface
 
     public static function getGroups(): array
     {
-        return ['dev'];
+        return ['dev', 'prod'];
     }
 
     public function load(\Doctrine\Persistence\ObjectManager $manager)

@@ -164,7 +164,6 @@ class NewsService
     public function getNewsSlider():array
     {
         $news = $this->newsRepository->getListSlider();
-        usort($news, static fn($a, $b) => ($a['sort'] < $b['sort']));
 
         foreach ($news as $key => $item) {
             $news[$key]['date'] = $this->dateConstant->getDateWithYearOrNot($item['createdAt']);

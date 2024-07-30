@@ -56,7 +56,7 @@
                                     <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                         <div class="accordion-body">
                                             <p class="fw-light fs-6">от {{ item.priceTotal }} ₽</p>
-                                            <p class="fw-light fs-6"><b>Цена за м²</b>{{ item.price }} ₽</p>
+                                            <p class="fw-light fs-6"><b>Цена за м² от: </b>{{ item.price_per_metr_min }} ₽</p>
                                             <p class="text-muted"><b>Застройщик</b><u class="fw-light">{{ item.developer }}</u></p>
                                             <p class="text-muted border-top-grey"><b>Срок сдачи</b>{{ item.date }}</p>
                                             <p class="text-muted border-top-grey"><b>Категория</b>
@@ -158,7 +158,7 @@
                         <div class="sticky-info position-sticky w-100 left-0 top-0 bg-white p-4">
                             <h2>Об объекте</h2>
                             <p class="fw-light fs-6">от {{ item.priceTotal }} ₽</p>
-                            <p class="fw-light fs-6"><b>Цена за м²</b>{{ item.price }} ₽</p>
+                            <p class="fw-light fs-6"><b>Цена за м² от: </b>{{ item.price_per_metr_min }} ₽</p>
                             <p class="text-muted"><b>Застройщик</b><u class="fw-light">{{ item.developer }}</u></p>
                             <p class="text-muted border-top-grey"><b>Срок сдачи</b>{{ item.date }}</p>
                             <p class="text-muted border-top-grey"><b>Категория</b><u class="fw-light">{{ item.parameters['Класс жилья'] | capitalize }}</u></p>

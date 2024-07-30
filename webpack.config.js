@@ -90,16 +90,16 @@ Encore
 
 ;
 
-if (Encore.isProduction()) {
-    Encore
-        .addPlugin(new CompressionPlugin({
-            filename: '[path][base].gz[query]',
-            algorithm: 'gzip',
-            test: /\.(js|css|svg)$/,
-            compressionOptions: {level: 9},
-            minRatio: 1,
-            deleteOriginalAssets: false
-        }));
-}
+// if (Encore.isProduction()) {
+//     Encore
+//         .addPlugin(new CompressionPlugin({
+//             filename: '[path][base].gz[query]',
+//             algorithm: 'gzip',
+//             test: /\.(js|css|svg)$/,
+//             compressionOptions: {level: 9},
+//             minRatio: 1,
+//             deleteOriginalAssets: false
+//         }));
+// }
 
 module.exports = Encore.getWebpackConfig();

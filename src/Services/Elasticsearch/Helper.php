@@ -61,14 +61,13 @@ class Helper
         $this->paramsQuery = [
             "size" => 10000,
             "_source" => [
-                'id',
+                'ID',
                 'title',
                 'location',
                 'price_min',
                 'price_max'
             ]
         ];
-
 
         if ($this->client->getIndex(Config::KRISHA_KZ_INDEX)->exists()) {
             try {
