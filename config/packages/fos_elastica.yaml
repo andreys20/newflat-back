@@ -1,10 +1,10 @@
 fos_elastica:
     clients:
         default: {
-            url: '127.0.0.1:9200/',
+            url: 'elasticsearch:9200/',
             username: 'elastic',
             password: 'elastic'
         }
     indexes:
         mskguru: ~
-        mskguru_developers: ~
+        developers: ~

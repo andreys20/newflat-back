@@ -15,15 +15,18 @@ RUN apt-get update && apt-get install -y \
     libpng-dev \
     libjpeg-dev \
     libfreetype6-dev \
+    git \
+    libpq-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install gd pdo pdo_mysql
+    && docker-php-ext-install gd pdo pdo_pgsql
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www/html
 
-COPY --from=build /app /var/www/html
+ENV COMPOSER_ALLOW_SUPERUSER=1
 
-COPY --from=build /app/build /var/www/html/public
+COPY --from=build /app /var/www/html
+RUN composer require symfony/flex
 
 RUN composer install
 
