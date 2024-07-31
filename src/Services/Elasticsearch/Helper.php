@@ -117,7 +117,7 @@ class Helper
     {
         if ($buildingId) {
             $this->paramsQuery['query']['bool']['filter']['term'] = [
-                 'id.keyword' => $buildingId
+                 'ID.keyword' => $buildingId
             ];
         }
     }

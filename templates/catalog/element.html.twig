@@ -50,7 +50,13 @@
                                                 <div class="text-start d-flex align-items-center h-100">
                                                     <div class="card-body text-start">
                                                         <h3 class="card-title">{{ item.title }}</h3>
-                                                        <p class="card-text text-muted">{{ item.price }} ₽</p>
+                                                        <p class="card-text text-muted">
+                                                            {% if item.price %}
+                                                                {{ item.price }} ₽
+                                                            {% else %}
+                                                                Цена по запросу
+                                                            {% endif %}
+                                                        </p>
                                                         <p class="card-text">{{ item.location }}</p>
                                                         <p class="card-text"><small class="text-muted">Застройщик: {{ item.developer }}</small></p>
                                                         <p><b class="text-muted">Срок сдачи:</b> {{ item.date }}</p>

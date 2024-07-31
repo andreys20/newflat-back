@@ -45,14 +45,20 @@ export default class extends Controller {
                             myMap.setCenter([latitude, longitude]);
                         }
 
+                        var balloonContentBody = "<p><strong>Адрес: </strong>" + item.location + "</p>";
+
+                        if (item.priceTotal !== '0') {
+                             balloonContentBody = balloonContentBody + "<p><strong>Цена: </strong>" + item.priceTotal + " ₽</p>";
+                        } else {
+                             balloonContentBody = balloonContentBody +"<p><strong>Цена: <strong>по запросу</strong></p>";
+                        }
+
                         geoList[index] = new ymaps.Placemark(
                             [latitude, longitude],
                             {
                                 iconContent: item.title,
                                 balloonContentHeader: item.title,
-                                balloonContentBody: "<p><strong>Адрес: </strong>" + item.location + "</p>" +
-                                    "<p><strong>Цена: </strong>" + item.priceTotal + " ₽</p>"
-                                ,
+                                balloonContentBody: balloonContentBody,
                                 balloonContentFooter: "<a href='" + item.detail + "'>Подробная информации</a>"
                             },
                             {
