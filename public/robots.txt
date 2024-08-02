@@ -5,5 +5,5 @@ Disallow: /adserver
 Disallow: /admin/login
 Disallow: /admin/personal/news
 
-Sitemap: https://newflat.kz/newflat.xml
-Host: newflat.kz
+Sitemap: https://newflat.site/newflat.xml
+Host: newflat.site
