@@ -31,4 +31,12 @@ class MainController extends AbstractController
             'news' => $news
         ]);
     }
+
+    /**
+     * @Route("/privacy", name="privacy")
+     */
+    public function indexPrivacy(): Response
+    {
+        return $this->render('privacy/index.html.twig');
+    }
 }

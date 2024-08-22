@@ -29,10 +29,27 @@
                         <div class="building-block-photo">
                             <div id="slider_detail_building" class="carousel slide" data-bs-ride="carousel">
                                 <div class="carousel-inner">
-                                    {% for key, img in item.images %}
-                                    <div class="carousel-item {% if key == 0 %}active{% endif %}">
-                                        <img src="{{ img }}" class="d-block w-100 img-fluid" alt="...">
-                                    </div>
+
+                                    {% if item.id == '4544' %}
+                                        {% set images = {
+                                            '0': asset('build/images/zhkvery/1.jpg'),
+                                            '1': asset('build/images/zhkvery/2.jpg'),
+                                            '2': asset('build/images/zhkvery/3.jpg'),
+                                            '3': asset('build/images/zhkvery/4.jpg'),
+                                            '4': asset('build/images/zhkvery/5.jpg'),
+                                            '5': asset('build/images/zhkvery/6.jpg'),
+                                            '6': asset('build/images/zhkvery/7.jpg'),
+                                            '7': asset('build/images/zhkvery/8.jpg'),
+                                        }
+                                        %}
+
+                                    {% else %}
+                                        {% set images = item.images %}
+                                    {% endif %}
+                                    {% for key, img in images %}
+                                        <div class="carousel-item {% if key == 0 %}active{% endif %}">
+                                            <img src="{{ img }}" class="d-block w-100 img-fluid" alt="...">
+                                        </div>
                                     {% endfor %}
                                 </div>
                                 <button class="carousel-control-prev" type="button" data-bs-target="#slider_detail_building" data-bs-slide="prev">
@@ -81,16 +98,16 @@
                             <h2 class="py-4">Описание {{ item.title }}</h2>
                             <p>{{ item.description }}</p>
                         </div>
-{#                        {% if item.infrastructure %}#}
-{#                        <div class="building-block-description" id="infrastructure">#}
-{#                                <h2 class="py-4">Инфраструктура</h2>#}
-{#                                <ul>#}
-{#                                    {% for info in item.infrastructure %}#}
-{#                                        <li><p>{{ info }}</p></li>#}
-{#                                    {% endfor %}#}
-{#                                </ul>#}
-{#                        </div>#}
-{#                        {% endif %}#}
+                        {#                        {% if item.infrastructure %}#}
+                        {#                        <div class="building-block-description" id="infrastructure">#}
+                        {#                                <h2 class="py-4">Инфраструктура</h2>#}
+                        {#                                <ul>#}
+                        {#                                    {% for info in item.infrastructure %}#}
+                        {#                                        <li><p>{{ info }}</p></li>#}
+                        {#                                    {% endfor %}#}
+                        {#                                </ul>#}
+                        {#                        </div>#}
+                        {#                        {% endif %}#}
                         {% if item.parameters %}
                             <div class="building-block-characteristic" id="characteristic">
                                 <h2 class="py-4">Характеристики</h2>
@@ -102,51 +119,51 @@
                                 {% endfor %}
                             </div>
                         {% endif %}
-{#                        <div class="building-block-flats" id="flats"#}
-{#                                {{ stimulus_controller('building-table') }}#}
-{#                                {{ stimulus_target('building-table', 'table') }}#}
-{#                        >#}
-{#                            <h2 class="py-4">Цены</h2>#}
-{#                            <div class="flats-list">#}
-{#                                {% for i in 0..2 %}#}
-{#                                <div class="flats-list__item">#}
-{#                                    <div class="flats-list__item-table">#}
-{#                                        <table>#}
-{#                                            <thead>#}
-{#                                            <tr>#}
-{#                                                <td>Кол-во комнат</td>#}
-{#                                                <td>S общ</td>#}
-{#                                                <td>Санузел</td>#}
-{#                                                <td>Цена за м<sup>2</sup></td>#}
-{#                                                <td>Цена, руб</td>#}
-{#                                                <td>Планировка</td>#}
-{#                                            </tr>#}
-{#                                            </thead>#}
-{#                                            <tbody>#}
-{#                                            {% for i in 0..10 %}#}
-{#                                                <tr {% if i >= 6 %}style="display: none"{% endif %}>#}
-{#                                                    <td>1 - комн</td>#}
-{#                                                    <td>21.77</td>#}
-{#                                                    <td>разд</td>#}
-{#                                                    <td>105,244</td>#}
-{#                                                    <td>2,291,148</td>#}
-{#                                                    <td>#}
-{#                                                        <a href="/parser/images/allinclusive/1.jpg" class="zoom">#}
-{#                                                            <img src="{{ asset('build/images/flats.webp') }}">#}
-{#                                                        </a>#}
-{#                                                    </td>#}
-{#                                                </tr>#}
-{#                                            {% endfor %}#}
-{#                                            </tbody>#}
-{#                                        </table>#}
-{#                                    </div>#}
-{#                                    <div class="btn__block d-flex justify-content-center">#}
-{#                                        <a class="show-hide btn">Показать все</a>#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                                {% endfor %}#}
-{#                            </div>#}
-{#                        </div>#}
+                        {#                        <div class="building-block-flats" id="flats"#}
+                        {#                                {{ stimulus_controller('building-table') }}#}
+                        {#                                {{ stimulus_target('building-table', 'table') }}#}
+                        {#                        >#}
+                        {#                            <h2 class="py-4">Цены</h2>#}
+                        {#                            <div class="flats-list">#}
+                        {#                                {% for i in 0..2 %}#}
+                        {#                                <div class="flats-list__item">#}
+                        {#                                    <div class="flats-list__item-table">#}
+                        {#                                        <table>#}
+                        {#                                            <thead>#}
+                        {#                                            <tr>#}
+                        {#                                                <td>Кол-во комнат</td>#}
+                        {#                                                <td>S общ</td>#}
+                        {#                                                <td>Санузел</td>#}
+                        {#                                                <td>Цена за м<sup>2</sup></td>#}
+                        {#                                                <td>Цена, руб</td>#}
+                        {#                                                <td>Планировка</td>#}
+                        {#                                            </tr>#}
+                        {#                                            </thead>#}
+                        {#                                            <tbody>#}
+                        {#                                            {% for i in 0..10 %}#}
+                        {#                                                <tr {% if i >= 6 %}style="display: none"{% endif %}>#}
+                        {#                                                    <td>1 - комн</td>#}
+                        {#                                                    <td>21.77</td>#}
+                        {#                                                    <td>разд</td>#}
+                        {#                                                    <td>105,244</td>#}
+                        {#                                                    <td>2,291,148</td>#}
+                        {#                                                    <td>#}
+                        {#                                                        <a href="/parser/images/allinclusive/1.jpg" class="zoom">#}
+                        {#                                                            <img src="{{ asset('build/images/flats.webp') }}">#}
+                        {#                                                        </a>#}
+                        {#                                                    </td>#}
+                        {#                                                </tr>#}
+                        {#                                            {% endfor %}#}
+                        {#                                            </tbody>#}
+                        {#                                        </table>#}
+                        {#                                    </div>#}
+                        {#                                    <div class="btn__block d-flex justify-content-center">#}
+                        {#                                        <a class="show-hide btn">Показать все</a>#}
+                        {#                                    </div>#}
+                        {#                                </div>#}
+                        {#                                {% endfor %}#}
+                        {#                            </div>#}
+                        {#                        </div>#}
                         <div class="building-block-map">
                             <h2 class="py-4">На карте</h2>
                             <div id="map"
